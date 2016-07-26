@@ -29,3 +29,73 @@
 .jumbotron {
 	background: url("../images/banner1.jpg");
 }
+
+.carousel.fade {
+  opacity: 1;
+}
+
+.carousel.fade .item {
+  -moz-transition: opacity ease-in-out 5s;
+  -o-transition: opacity ease-in-out 5s;
+  -webkit-transition: opacity ease-in-out 5s;
+  transition: opacity ease-in-out 5s;
+  left: 0 !important;
+  opacity: 0;
+  top:0;
+  position:absolute;
+  width: 100%;
+  display:block !important;
+  z-index:1;
+}
+
+.carousel.fade .item:first-child {
+  top:auto;
+  position:relative;
+}
+
+.carousel.fade .item.active {
+  opacity: 1;
+  -moz-transition: opacity ease-in-out 5s;
+  -o-transition: opacity ease-in-out 5s;
+  -webkit-transition: opacity ease-in-out 5s;
+  transition: opacity ease-in-out 5s;
+  z-index:2;
+}
+
+.item img {
+	max-height: 100%;
+}
+
+.carousel {
+	height: 600px;
+}
+
+.product {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.product .row > div > img{
+	text-align: center;
+}
+
+.holder {
+	background: #262F36;
+	padding: 100px 0 100px 0;
+	color: #FFFFFF;
+}
+
+.holder a {
+		margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px){
+	.product {
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+	.holder {
+		padding: 50px 0 50px 0;
+	}
+	
+}
