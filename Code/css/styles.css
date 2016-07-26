@@ -1,0 +1,31 @@
+/************ Global Styles ***********/
+
+/* ---- Navigation Bar Styles ---- */
+.navbar {
+	margin-bottom: 0;
+	border: none;
+	border-radius: 0;
+}
+
+.navbar-default .navbar-brand {
+	color: #FFFFFF;
+}
+
+.navbar-default {
+	background: #3c3d47;
+}
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:visited {
+	color: #BADA55;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #FFFFFF;
+}
+
+/* ---- Body Styles ---- */
+
+.jumbotron {
+	background: url("../images/banner1.jpg");
+}
