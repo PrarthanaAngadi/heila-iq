@@ -62,13 +62,16 @@
   z-index:2;
 }
 
-.product{
+.product {
 	margin-top: 100px;
 	margin-bottom: 100px;
 }
 
-.holder {
+.detail {
 	background: #262F36;
+}
+
+.holder {	
 	padding: 100px 0 100px 0;
 	color: #FFFFFF;
 }
@@ -90,14 +93,26 @@ blockquote p {
 	font-weight: bold;
 }
 
+body > footer {
+	background: #F4F5F6;
+	padding: 50px 0 50px 0;
+}
+
+body > footer h3 {
+	font-size: 1em;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: 1.3em;
+}
+
 @media only screen and (max-width: 992px){
 	.product {
 		margin-top: 50px;
 		margin-bottom: 50px;
 	}
 
-	.holder {
-		padding: 50px 0 50px 0;
+	.holder, body > footer {
+		padding: 25px 0 25px 0;
 	}
 
 	.founder {
@@ -112,4 +127,24 @@ blockquote p {
 		width: 100%;
 	}
 
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	
+}
+
+ul li {
+	line-height: 1.65;
+}
+
+ul li a {
+	text-decoration: none;
+	color: #333333;
+}
+
+ul li a:hover {
+	text-decoration: underline;
+	color: #333333;
 }
