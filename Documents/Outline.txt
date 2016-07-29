@@ -19,7 +19,7 @@ Blogs
 
 Dashboard
 ----------
-Login
-Add/Edit Users
-Add Blogs
-Add Job Openings
+Login - Tushar
+Add/Edit Users - Tushar
+Add Blogs - Prarthana
+Add Job Openings - Juilee
