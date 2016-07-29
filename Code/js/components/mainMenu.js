@@ -65,5 +65,5 @@ var MenuItem = React.createClass({
 	}
 })
 
-ReactDOM.render(<Menu items="Home:index.html, About:#, Careers:#, Contact Us:#" />, $("body > header")[0]);
+ReactDOM.render(<Menu />, $("body > header")[0]);
 
