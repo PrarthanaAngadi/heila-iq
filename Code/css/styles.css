@@ -28,6 +28,14 @@
 
 .jumbotron {
 	background: url("../images/banner1.jpg");
+	background-size: cover;
+	background-position: center;
+	height: 95vh;
+}
+
+.carousel-inner > .item > img {
+	height: 95vh;
+	width: 100%;
 }
 
 .carousel.fade {
@@ -105,30 +113,6 @@ body > footer h3 {
 	margin-bottom: 1.3em;
 }
 
-@media only screen and (max-width: 992px){
-	.product {
-		margin-top: 50px;
-		margin-bottom: 50px;
-	}
-
-	.holder, body > footer {
-		padding: 25px 0 25px 0;
-	}
-
-	.founder {
-		margin-top: 50px;
-	}
-	
-}
-
-@media only screen and (max-width: 768px) {
-
-	.product a, .holder a {
-		width: 100%;
-	}
-
-}
-
 ul {
 	list-style-type: none;
 	padding: 0;
@@ -147,4 +131,45 @@ ul li a {
 ul li a:hover {
 	text-decoration: underline;
 	color: #333333;
+}
+
+/* ---- Footer Styles ---- */
+
+.social-icons {
+	padding-top: 50px;
+}
+
+/* ---- Media Queries ---- */
+
+@media only screen and (max-width: 992px){
+	.product {
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+
+	.holder, body > footer {
+		padding: 25px 0 25px 0;
+	}
+
+	.founder {
+		margin-top: 50px;
+	}
+	
+}
+
+@media only screen and (max-width: 767px) {
+
+	.product a, .holder a {
+		width: 100%;
+	}
+
+	.social-icons {
+		padding: 10px 0;
+		text-align: center;
+	}
+
+	.social-icons:nth-child(even) {
+		text-align: left;
+	}
+
 }
