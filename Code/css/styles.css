@@ -101,18 +101,6 @@ blockquote p {
 	font-weight: bold;
 }
 
-body > footer {
-	background: #F4F5F6;
-	padding: 50px 0 50px 0;
-}
-
-body > footer h3 {
-	font-size: 1em;
-	font-weight: bold;
-	text-transform: uppercase;
-	margin-bottom: 1.3em;
-}
-
 ul {
 	list-style-type: none;
 	padding: 0;
@@ -135,8 +123,55 @@ ul li a:hover {
 
 /* ---- Footer Styles ---- */
 
+body > footer {
+    background: #F4F5F6;
+}
+
+body > footer > div:first-child {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+body > footer h3 {
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1.3em;
+}
+
 .social-icons {
-	padding-top: 50px;
+	padding: 50px 0 0 0;
+    text-align: center;
+}
+
+.copyright {
+	text-transform: uppercase;
+    font-size: 0.9em;
+    padding: 5px;
+    background: #3c3d47;
+    color: #cccccc;
+}
+
+.copyright .row > div:first-of-type {
+    text-align: right;
+}
+
+.copyright .row a {
+    margin-right: 5px;
+    color: #cccccc;
+    padding-right: 9px;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.copyright .row a:last-of-type {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: 0;
+}
+
+.copyright .row a:hover {
+    color: #FFFFFF;
 }
 
 /* ---- Media Queries ---- */
@@ -147,8 +182,9 @@ ul li a:hover {
 		margin-bottom: 50px;
 	}
 
-	.holder, body > footer {
-		padding: 25px 0 25px 0;
+	.holder, body > footer > div:first-child {
+		padding-top: 25px;
+        padding-bottom: 25px;
 	}
 
 	.founder {
@@ -168,8 +204,8 @@ ul li a:hover {
 		text-align: center;
 	}
 
-	.social-icons:nth-child(even) {
-		text-align: left;
-	}
+    .copyright .row div {
+        text-align: center !important;
+    }
 
 }
