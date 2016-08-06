@@ -1,5 +1,14 @@
 /************ Global Styles ***********/
 
+/*
+Color Theme
+
+Dark Blue: #505160
+Light Blue: #68829E
+Light Green: #AEBD38
+Dark Green: #598234
+*/
+
 /* ---- Navigation Bar Styles ---- */
 .navbar {
 	margin-bottom: 0;
@@ -12,12 +21,12 @@
 }
 
 .navbar-default {
-	background: #3c3d47;
+	background: #505160;
 }
 
 .navbar-default .navbar-nav > li > a,
 .navbar-default .navbar-nav > li > a:visited {
-	color: #BADA55;
+	color: #AEBD38;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
@@ -76,7 +85,7 @@
 }
 
 .detail {
-	background: #262F36;
+	background: #505160;
 }
 
 .holder {	
@@ -85,7 +94,7 @@
 }
 
 .holder a {
-		margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .founder {
@@ -101,24 +110,15 @@ blockquote p {
 	font-weight: bold;
 }
 
-ul {
-	list-style-type: none;
-	padding: 0;
-	
+.btn-info {
+    background-color: #AEBD38;
+    border-color: #AEBD38;
+    color: #FFFFFF;
 }
 
-ul li {
-	line-height: 1.65;
-}
-
-ul li a {
-	text-decoration: none;
-	color: #333333;
-}
-
-ul li a:hover {
-	text-decoration: underline;
-	color: #333333;
+.btn-info:hover {
+    background-color: #598234;
+    border-color: #598234;
 }
 
 /* ---- Footer Styles ---- */
@@ -148,7 +148,7 @@ body > footer h3 {
 	text-transform: uppercase;
     font-size: 0.9em;
     padding: 5px;
-    background: #3c3d47;
+    background: #505160;
     color: #cccccc;
 }
 
