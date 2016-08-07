@@ -39,7 +39,6 @@ Dark Green: #598234
 	background: url("../images/banner1.jpg");
 	background-size: cover;
 	background-position: center;
-	height: 95vh;
 }
 
 .carousel-inner > .item > img {
