@@ -181,7 +181,7 @@ body > footer h3 {
 		margin-bottom: 50px;
 	}
 
-	.holder, body > footer > div:first-child {
+	.holder, body > footer > div > div:first-child {
 		padding-top: 25px;
         padding-bottom: 25px;
 	}
