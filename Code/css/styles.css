@@ -126,7 +126,7 @@ body > footer {
     background: #F4F5F6;
 }
 
-body > footer > div:first-child {
+body > footer > div > div:first-child {
     padding-top: 50px;
     padding-bottom: 50px;
 }
