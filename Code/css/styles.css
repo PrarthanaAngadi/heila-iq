@@ -10,7 +10,7 @@ Dark Green: #598234
 */
 
 /* ---- Navigation Bar Styles ---- */
-.navbar {
+.navbar, .navbar-collapse {
 	margin-bottom: 0;
 	border: none;
 	border-radius: 0;
@@ -34,6 +34,16 @@ Dark Green: #598234
 }
 
 /* ---- Body Styles ---- */
+
+h2 {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.3em;
+    font-weight: bold;
+}
 
 .jumbotron {
 	background: url("../images/banner1.jpg");
@@ -78,17 +88,70 @@ Dark Green: #598234
   z-index:2;
 }
 
-.product {
-	margin-top: 100px;
-	margin-bottom: 100px;
+.block {
+    text-align: center;
+    vertical-align: middle;
 }
 
-.detail {
+.circle {
+     border-radius: 200px;
+     height: 200px;
+     font-weight: bold;
+     font-size: 1.3em;
+     width: 200px;
+     display: table;
+     margin: 20px auto;
+     border: 5px double #FFFFFF;
+}
+
+.circle p {
+    vertical-align: middle;
+    display: table-cell;
+    text-transform: uppercase;
+}
+
+.circle + div p {
+    padding: 0 80px;
+}
+
+.product {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.product .block {
+    padding-top: 15px;
+}
+
+.product .circle {
+    border-radius: 40px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #68829E;
+    color: #FFFFFF;
+    background: #68829E;
+}
+
+.product .row .row {
+    vertical-align: middle;
+}
+
+.product-img {
+    padding-top: 50px;
+}
+
+.product-def h2 {
+    text-align: left;
+    margin-bottom: 25px;
+    line-height: 1.3em;
+}
+
+.detail, .users {
 	background: #505160;
 }
 
-.holder {	
-	padding: 100px 0 100px 0;
+.holder, .users {
+	padding: 50px 0 50px 0;
 	color: #FFFFFF;
 }
 
@@ -119,6 +182,7 @@ blockquote p {
     background-color: #598234;
     border-color: #598234;
 }
+
 
 /* ---- Footer Styles ---- */
 
@@ -175,13 +239,19 @@ body > footer h3 {
 
 /* ---- Media Queries ---- */
 
+@media only screen and (min-width: 993px){
+    .users .content .block:nth-child(2){
+        padding-top: 130px;
+    }
+}
+
 @media only screen and (max-width: 992px){
 	.product {
 		margin-top: 50px;
 		margin-bottom: 50px;
 	}
 
-	.holder, body > footer > div > div:first-child {
+	.holder, .users, body > footer > div > div:first-child {
 		padding-top: 25px;
         padding-bottom: 25px;
 	}
@@ -189,6 +259,14 @@ body > footer h3 {
 	.founder {
 		margin-top: 50px;
 	}
+
+    .circle + div p {
+        padding: 0 220px 50px 220px;
+    }
+
+    .product-img {
+        padding-top: 0;
+    }
 	
 }
 
@@ -205,6 +283,14 @@ body > footer h3 {
 
     .copyright .row div {
         text-align: center !important;
+    }
+
+    .circle + div p {
+        padding: 0 50px 50px 50px;
+    }
+
+    .product-img {
+        padding-top: 0;
     }
 
 }
