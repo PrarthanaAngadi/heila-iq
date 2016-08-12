@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  password: 
+  firstName: 
+  lastName: 
+  dob: 2016-08-11
+
+two:
+  password: 
+  firstName: 
+  lastName: 
+  dob: 2016-08-11
