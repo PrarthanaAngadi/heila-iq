@@ -183,6 +183,11 @@ blockquote p {
     border-color: #598234;
 }
 
+.selected {
+    padding-bottom: 10px !important;
+    border-bottom: 5px solid #AEBD38;
+}
+
 
 /* ---- Footer Styles ---- */
 
