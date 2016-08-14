@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 # Use mysql as the database for Active Record
 gem 'mysql'
+# Use responders to render json format
+gem 'responders', '~> 2.0'
 # Sqlite3 is not used
 gem 'sqlite3'
 # Use SCSS for stylesheets

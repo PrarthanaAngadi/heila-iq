@@ -53,9 +53,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   # User resources is the main resource. Blogs & Jobs are associated to User.
-      resources :users 
+      resources :users, :except => ['show', 'update', 'destroy','loginCheck'] 
       resources :jobs
       resources :blogs
-      
-
+      post 'users/login' => 'users#loginCheck'
+      post 'users/:id' => 'users#update'   
 end

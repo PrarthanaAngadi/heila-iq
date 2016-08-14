@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	respond_to :json
 
 	def index
-		@users = User.all
+		@users = User.where(status: 'active').all
 		respond_to do |format|
 		format.html
 		format.json {render json: @users}
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.all
+		@user = User.find(params[:id])
 		respond_to do |format|
 		format.html
 		format.json {render json: @user}
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 		information = request.raw_post
 		data_parsed = JSON.parse(information)
 		@user = User.new(data_parsed)
+		@user.status = "active"
 		if @user.save
 			render :json => '{message: "success"}'
 		else
@@ -36,24 +37,33 @@ class UsersController < ApplicationController
 	def update
 		information = request.raw_post
 		data_parsed = JSON.parse(information)
-		@user = User.find(data_parsed[:id])
-		if @user.update
+		@user = User.find(params[:id])
+		if @user.update(data_parsed)
 			render :json => '{message: "success"}'
 		else
 			render :json => '{message: "failure"}'
 		end
 	end
 
-	def destroy
+	def loginCheck
 		information = request.raw_post
 		data_parsed = JSON.parse(information)
-		@user = User.find(data_parsed[:id])
-		if @user.destroy
-			render :json => '{message: "success"}'
-		else
-			render :json => '{message: "failure"}'
+		@user = User.where(email: data_parsed["email"], password: data_parsed["password"]).all
+		respond_to do |format|
+		format.html
+		format.json {render json: @user}
 		end
 	end
+
+	#def destroy
+	#	@user = User.find(params[:id])
+	#	@user.status = "inactive"
+	#	if @user.save
+	#		render :json => '{message: "success"}'
+	#	else
+	#		render :json => '{message: "failure"}'
+	#	end
+	#end
 
 
 end

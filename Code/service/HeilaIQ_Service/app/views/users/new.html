@@ -1,0 +1,44 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.serializeObject/2.0.3/jquery.serializeObject.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#simplepost").click(function(e)
+{
+var data = $('#ajaxform').serializeObject();
+ $.ajax({
+    type: 'POST',
+    url: 'http://localhost:3000/users/login',
+    dataType : 'json',
+    data: JSON.stringify(data),
+    success: function (response) {
+    console.log(response);   
+    },
+    error:function(request, textStatus, errorThrown) {
+        alert(errorThrown);
+    }
+}); 
+
+});
+});
+</script>
+</head>
+<body>
+
+<div id="message">
+<form id="ajaxform" method="POST">
+Email: <input type="text" name="email"> <br/>
+Password: <input type="password" name="password"> <br/>
+First Name: <input type="text" name="firstName"> <br/>
+Last Name: <input type="text" name="lastName"> <br/>
+DOB: <input type="date" name="dob"> <br/>
+
+
+<input type="button" class="btn btn-info" id="simplepost" value="Run Code"></form>
+ </div>
+</body>
+</html>
