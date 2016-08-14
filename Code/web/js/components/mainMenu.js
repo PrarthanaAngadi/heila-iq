@@ -21,7 +21,7 @@ var Menu = React.createClass({
 
 	render: function(){
 		return (
-			<nav className="navbar navbar-default" role="navigation">
+			<nav className="navbar navbar-default navbar-fixed-top" role="navigation">
 		        <div className="container">
 		          <div className="navbar-header">
 			          {
@@ -59,7 +59,6 @@ var Menu = React.createClass({
 	componentDidMount: function(){
 		var page = $("#page-info").val();
 		$("ul.nav li a:eq(" + page + ")").addClass("selected");
-        $(".navbar").affix();
 	}
 });
 
