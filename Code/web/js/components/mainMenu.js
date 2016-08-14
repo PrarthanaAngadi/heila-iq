@@ -59,6 +59,7 @@ var Menu = React.createClass({
 	componentDidMount: function(){
 		var page = $("#page-info").val();
 		$("ul.nav li a:eq(" + page + ")").addClass("selected");
+        $(".navbar").affix();
 	}
 });
 
