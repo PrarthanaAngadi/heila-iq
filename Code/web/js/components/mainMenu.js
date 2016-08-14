@@ -54,6 +54,12 @@ var Menu = React.createClass({
 		        </div>
 		    </nav>
 		);
+	},
+
+	componentDidMount: function(){
+		var page = $("#page-info").val();
+		$("ul.nav li a:eq(" + page + ")").addClass("selected");
+        $(".navbar").affix();
 	}
 });
 
@@ -65,5 +71,5 @@ var MenuItem = React.createClass({
 	}
 })
 
-ReactDOM.render(<Menu items="Home:index.html, About:#, Media:#, Contact Us:# "/>, $("body > header")[0]);
+ReactDOM.render(<Menu items="Home:index.html, About:about.html, Media:#, Contact Us:# "/>, $("body > header")[0]);
 
