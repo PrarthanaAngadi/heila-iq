@@ -39,6 +39,14 @@ Dark Green: #598234
 	color: #FFFFFF;
 }
 
+a {
+    color: #68829E;
+}
+
+a:hover {
+    color: #505160;
+}
+
 /* ---- Body Styles ---- */
 
 h2 {
@@ -63,6 +71,17 @@ h3 {
 
 .bold {
     font-weight: bold;
+}
+
+.btn-info {
+    background-color: #AEBD38;
+    border-color: #AEBD38;
+    color: #FFFFFF;
+}
+
+.btn-info:hover {
+    background-color: #598234;
+    border-color: #598234;
 }
 
 /* ---- Home Page Styles ---- */
@@ -178,17 +197,6 @@ h3 {
 
 .holder a {
     margin-bottom: 20px;
-}
-
-.btn-info {
-    background-color: #AEBD38;
-    border-color: #AEBD38;
-    color: #FFFFFF;
-}
-
-.btn-info:hover {
-    background-color: #598234;
-    border-color: #598234;
 }
 
 
