@@ -44,13 +44,13 @@ h3 {
     font-size: 1.3em;
     font-weight: bold;
 }
-
+/*
 .jumbotron {
 	background: url("../images/banner1.jpg");
 	background-size: cover;
 	background-position: center;
 }
-
+*/
 .carousel-inner > .item > img {
 	height: 95vh;
 	width: 100%;
@@ -243,6 +243,12 @@ body > footer h3 {
     .users .content .block:nth-child(2){
         padding-top: 130px;
     }
+
+    .contactUs_form .social-icons {
+        padding: 150px 0;
+        text-align: center;
+
+    }
 }
 
 @media only screen and (max-width: 992px){
@@ -267,7 +273,12 @@ body > footer h3 {
     .product-img {
         padding-top: 0;
     }
-	
+
+    .contactUs_form .social-icons {
+        padding: 10px 0;
+        text-align: center;
+
+    }
 }
 
 @media only screen and (max-width: 767px) {
