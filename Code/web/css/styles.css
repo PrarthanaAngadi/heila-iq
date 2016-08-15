@@ -52,6 +52,21 @@ h3 {
 }
 
 .jumbotron {
+    padding-top: 50px;
+    padding-bottom: 0;
+}
+
+.selected {
+    padding-bottom: 10px !important;
+    border-bottom: 5px solid #AEBD38;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* ---- Home Page Styles ---- */
+.home-jumbotron {
 	background: url("../images/banner1.jpg");
 	background-size: cover;
 	background-position: center;
@@ -152,30 +167,17 @@ h3 {
     line-height: 1.3em;
 }
 
-.detail, .users {
+.detail, .users, .awards{
 	background: #68829E;
 }
 
-.holder, .users {
+.holder, .users, .awards {
 	padding: 50px 0 50px 0;
 	color: #FFFFFF;
 }
 
 .holder a {
     margin-bottom: 20px;
-}
-
-.founder {
-	margin-top: 100px;
-}
-
-blockquote {
-	border: none;	
-}
-
-blockquote p {
-	font-size: 1.5em;
-	font-weight: bold;
 }
 
 .btn-info {
@@ -189,11 +191,49 @@ blockquote p {
     border-color: #598234;
 }
 
-.selected {
-    padding-bottom: 10px !important;
-    border-bottom: 5px solid #AEBD38;
+
+/* ---- About Page Styles ---- */
+
+.about {
+    margin-top: 50px;
+    margin-bottom: 25px;
 }
 
+.about p{
+    text-align: justify;
+    line-height: 2.5;
+}
+
+.prize1 {
+    background: url("../images/prize1.png");
+}
+
+.prize2 {
+    background: url("../images/prize2.png");
+}
+
+.about-jumbotron {
+    padding-top: 0;
+    height: 100vh;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 0;
+    margin-top:50px;
+}
+
+.team h2 {
+    margin-bottom: 25px;
+}
+
+.team .row div {
+    padding: 25px;
+}
+
+.team img {
+    height: 250px;
+    width: 250px;
+}
 
 /* ---- Footer Styles ---- */
 
