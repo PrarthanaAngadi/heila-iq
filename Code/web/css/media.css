@@ -1,0 +1,7 @@
+.stories .container {
+    width: 100%;
+}
+
+.stories .primary, .stories .secondary {
+    width: 50%;
+}
