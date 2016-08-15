@@ -19,7 +19,7 @@ var Footer = React.createClass({
                         <div className="col-md-4 col-sm-12">
                             <div className="row">
                                 <div className="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3 col-xs-6 social-icons">
-                                    <a className="btn btn-social-icon btn-lg btn-twitter"><span className="fa fa-twitter"></span></a>
+                                    <a href={"https://twitter.com/heilatech"} target="_blank" className="btn btn-social-icon btn-lg btn-twitter"><span className="fa fa-twitter"></span></a>
                                 </div>
                                 <div className="col-md-2 col-sm-3 col-xs-6 social-icons">
                                     <a className="btn btn-social-icon btn-lg btn-linkedin"><span className="fa fa-linkedin"></span></a>
