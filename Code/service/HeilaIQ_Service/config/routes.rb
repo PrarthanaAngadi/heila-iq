@@ -58,4 +58,5 @@ Rails.application.routes.draw do
       resources :blogs
       post 'users/login' => 'users#loginCheck'
       post 'users/:id' => 'users#update'   
+      post 'contact/email' => 'contact#sendEmail'
 end
