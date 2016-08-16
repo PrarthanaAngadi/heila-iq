@@ -6,17 +6,41 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/dashboard-styles.css">
-
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.serializeObject/2.0.3/jquery.serializeObject.min.js"></script>
     <script src="js/dashboardMenu.js"></script>
     <script src="js/react-dom.min.js"></script>
     <script src="js/react.min.js"></script>
-    <script src="js/jquery-3.1.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
     <script>
         $(document).ready(function(){
             $("#addUser").click(function(){
                 $("#addUserModal").modal();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#simplepost").click(function(e)
+            {
+                var data = $('#ajaxform').serializeObject();
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:3000/users.json',
+                    dataType : 'json',
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        debugger;
+                        console.log(response);
+                    },
+                    error:function(request, textStatus, errorThrown) {
+                        debugger;
+                        alert(errorThrown);
+                    }
+                });
+
             });
         });
     </script>
@@ -123,8 +147,8 @@
                         <h1 class="modal-title">User Signup</h1>
                     </div>
                     <div class="modal-body">
-                        <form>
-                       <div class="form-group">
+                        <form id="ajaxform" method="post">
+                       <div class="form-group" ng-app="userapp" ng-controller="UserController">
                            <label for="firstname" class="control-label">Firstname:</label>
                            <input type="text" class="form-control" id="firstname" name="firstName" placeholder="Firstname" />
                            </div>
@@ -147,7 +171,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-success" value="Create User" />
+                        <input type="button" class="btn btn-success" id="simplepost" value="Create User" />
                     </div>
                 </div>
 
