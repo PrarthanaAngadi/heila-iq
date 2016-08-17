@@ -35,12 +35,12 @@ class UsersController < ApplicationController
 			@user.status = "active"
 			#@user.password = password
 			if @user.save
-				render :json => '{message: "success"}'
+				render :json => '{"message": "success"}'
 			else
-				render :json => '{message: "failure"}'
+				render :json => '{"message": "failure"}'
 			end
 		else
-			render :json => '{message: "User already exits"}'
+			render :json => '{"message": "User already exits"}'
 		end
 	end
 
@@ -49,9 +49,9 @@ class UsersController < ApplicationController
 		data_parsed = JSON.parse(information)
 		@user = User.find(params[:id])
 		if @user.update(data_parsed)
-			render :json => '{message: "success"}'
+			render :json => '{"message": "success"}'
 		else
-			render :json => '{message: "failure"}'
+			render :json => '{"message": "failure"}'
 		end
 	end
 
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
                                   :userList => @usersAll }}			
             end
 		else
-			render :json => '{message: "failure"}'
+			render :json => '{"message": "failure"}'
 		end
 	end
 
