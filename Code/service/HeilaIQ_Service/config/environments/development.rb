@@ -45,7 +45,7 @@ Rails.application.configure do
    :user_name            => "api.java.project",
    :password             => "apijavaproject",
    :authentication       => "plain",
-  :enable_starttls_auto => true
+  :enable_starttls_auto  => true
   }
 
 end
