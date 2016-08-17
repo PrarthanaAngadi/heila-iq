@@ -11,9 +11,9 @@
     <script src="js/dashboardMenu.js"></script>
     <script src="js/react-dom.min.js"></script>
     <script src="js/react.min.js"></script>
-
     <script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
+    <script src="js/controller/dashboardController.js"></script>
     <script>
         $(document).ready(function(){
             $("#addUser").click(function(){
@@ -91,7 +91,7 @@
               </div>
       </div>
 </div>
-    <div class="container">
+    <div class="container" ng-app="userapp">
         <div class="row">
             <div class="col-md-3">
                 <div class="sidebar-nav">
@@ -114,8 +114,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6" id="users">
-
+            <div class="col-md-6" id="users" ng-controller="UserController">
             <table class="table table-hover glyphicon-hover">
                 <thead>
                 <tr>
@@ -125,9 +124,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Juilee Jadhav</td>
-                        <td>abc@chml.com</td>
+                    <tr  ng-repeat="user in data.entries">
+                        <td>{{user.name}}</td>
+                        <td>{{user.niceName}}</td>
                         <td><a href=""><span class="glyphicon glyphicon-pencil gray"></span></a>&nbsp;<a href=""><span class="glyphicon glyphicon-remove red"></span></a></td>
                     </tr>
                 </tbody>
