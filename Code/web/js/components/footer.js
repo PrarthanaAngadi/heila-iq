@@ -42,7 +42,7 @@ var Footer = React.createClass({
                             <h3>Contact Us</h3>
                         </header>
                         <section>
-                            <p>If you are interested in joining the team, please <a href="#">reach out to us</a>. We are particularly interested in people with backgrounds in control algorithms, systems integration, data analytics / machine learning.</p>
+                            <p>If you are interested in joining the team, please <a href="contact.html#contact-footer">reach out to us</a>. We are particularly interested in people with backgrounds in control algorithms, systems integration, data analytics / machine learning.</p>
                         </section>
                     </div>
                 );
@@ -50,10 +50,6 @@ var Footer = React.createClass({
 
             /* Footer content for Media Page */
             case "2":
-                break;
-
-            /* Footer content for Contact Us Page */
-            case "3":
                 break;
         }
     },

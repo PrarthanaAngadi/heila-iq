@@ -39,12 +39,17 @@ Dark Green: #598234
 	color: #FFFFFF;
 }
 
-a {
+a, a:visited, a:active {
     color: #68829E;
 }
 
 a:hover {
     color: #505160;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 /* ---- Body Styles ---- */
@@ -243,6 +248,40 @@ h3 {
     width: 250px;
 }
 
+/* ---- Contact Us Page Styles ---- */
+
+#map {
+    width: 100%;
+    height: 65vh;
+}
+
+.location {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.location h2 {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.location address{
+    margin-top: 20px;
+}
+
+footer textarea.form-control {
+    resize: vertical;
+    height: 180px;
+}
+
+.addr-container {
+    width: 240px;
+}
+
+.ng-scope .social-icons {
+    padding: 150px 0 0;
+}
+
 /* ---- Footer Styles ---- */
 
 body > footer {
@@ -296,17 +335,15 @@ body > footer h3 {
     color: #FFFFFF;
 }
 
+a.btn-social-icon {
+    color: #FFFFFF;
+}
+
 /* ---- Media Queries ---- */
 
 @media only screen and (min-width: 993px){
     .users .content .block:nth-child(2){
         padding-top: 130px;
-    }
-
-    .contactUs_form .social-icons {
-        padding: 150px 0;
-        text-align: center;
-
     }
 }
 
@@ -332,12 +369,6 @@ body > footer h3 {
     .product-img {
         padding-top: 0;
     }
-
-    .contactUs_form .social-icons {
-        padding: 10px 0;
-        text-align: center;
-
-    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -346,7 +377,7 @@ body > footer h3 {
 		width: 100%;
 	}
 
-	.social-icons {
+	.social-icons, .ng-scope .social-icons {
 		padding: 10px 0;
 		text-align: center;
 	}
