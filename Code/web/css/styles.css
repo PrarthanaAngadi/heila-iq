@@ -10,6 +10,12 @@ Dark Green: #598234
 */
 
 /* ---- Navigation Bar Styles ---- */
+
+.navbar {
+    width: 100%;
+    z-index: 100;
+}
+
 .navbar, .navbar-collapse {
 	margin-bottom: 0;
 	border: none;
@@ -52,7 +58,7 @@ h3 {
 }
 
 .carousel-inner > .item > img {
-	height: 95vh;
+	height: 100vh;
 	width: 100%;
 }
 
@@ -147,7 +153,7 @@ h3 {
 }
 
 .detail, .users {
-	background: #505160;
+	background: #68829E;
 }
 
 .holder, .users {
@@ -181,6 +187,11 @@ blockquote p {
 .btn-info:hover {
     background-color: #598234;
     border-color: #598234;
+}
+
+.selected {
+    padding-bottom: 10px !important;
+    border-bottom: 5px solid #AEBD38;
 }
 
 

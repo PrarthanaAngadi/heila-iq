@@ -1,6 +1,28 @@
 class UsersController < ApplicationController
 	skip_before_filter  :verify_authenticity_token
 	respond_to :json
+	#test for cross domain
+	before_filter :cors_preflight_check
+	after_filter :cors_set_access_control_headers
+
+	def cors_set_access_control_headers
+	  headers['Access-Control-Allow-Origin'] = '*'
+	  headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+	  headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
+	  headers['Access-Control-Max-Age'] = "1728000"
+	end
+
+	def cors_preflight_check
+	  if request.method == 'OPTIONS'
+	    headers['Access-Control-Allow-Origin'] = '*'
+	    headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+	    headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
+	    headers['Access-Control-Max-Age'] = '1728000'
+
+	    #render :text => '', :content_type => 'text/plain'
+	  end
+	end
+	#end test cross domain
 	#require 'digest/md5'
 
 	def index
@@ -13,7 +35,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@usersAll = User.where(status: 'active').all
+		#@usersAll = User.where(status: 'active').all
 		respond_to do |format|
 		format.html
 		format.json {render json: @user}
@@ -30,10 +52,8 @@ class UsersController < ApplicationController
 		userExists = User.where(email: data_parsed["email"],status: 'active').all
 
 		if userExists.empty? 
-			#password = Digest::MD5.digest(data_parsed["password"])
 			@user = User.new(data_parsed)
 			@user.status = "active"
-			#@user.password = password
 			if @user.save
 				render :json => '{"message": "success"}'
 			else
