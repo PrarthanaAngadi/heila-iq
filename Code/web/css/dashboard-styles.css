@@ -1,5 +1,23 @@
+/*Colors*/
 
-/*Juilee*/
+.white
+{
+    color: #ffffff;
+}
+.green
+{
+    color: #1c941e;
+}
+.gray
+{
+    color: #5e5e5e;
+}
+.red
+{
+    color:#ff0000;
+}
+
+/*navbar*/
 header .navbar
 {
     background: #505160;
@@ -25,22 +43,6 @@ header .navbar
     color: #ffffff;
     font-weight: bold;
 }
-.white
-{
-    color: #ffffff;
-}
-.green
-{
-    color: #1c941e;
-}
-.gray
-{
-    color: #5e5e5e;
-}
-.red
-{
-    color:#ff0000;
-}
 
 table.glyphicon-hover tbody .glyphicon {
     visibility: hidden;
@@ -56,7 +58,10 @@ table.glyphicon-hover tbody tr:hover .glyphicon {
     border: 0;
     background: transparent;
 }
-/**/
+/*Form styles*/
+
+/*---Form styles*/
+/*Copyright*/
 .copyright {
     text-transform: uppercase;
     font-size: 0.9em;
