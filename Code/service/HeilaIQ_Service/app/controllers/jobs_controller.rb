@@ -28,7 +28,7 @@ class JobsController < ApplicationController
 		@jobs = Job.where(status: 'active').all
 		respond_to do |format|
 		format.html
-		format.json  { render json: @jobs }	
+		format.json {render :json => {:jobs => @jobs}}
 		end
 	end
 
