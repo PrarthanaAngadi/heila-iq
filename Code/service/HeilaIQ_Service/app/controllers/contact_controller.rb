@@ -6,5 +6,6 @@ class ContactController < ApplicationController
 		data_parsed = JSON.parse(information)
 		@contact = Contact.new(data_parsed)
 		ContactMailer.sample_email(@contact).deliver_now
+		render :json => '{"message": "success"}'
 	end
 end
