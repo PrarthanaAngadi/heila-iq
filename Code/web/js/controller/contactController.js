@@ -1,19 +1,6 @@
 var contactApp = angular.module('contactApp', []);
 
-contactApp.controller('contactController', function ($scope, $http) {
-
-    /*$scope.submitForm = function () {
-
-     $http({
-     method: 'POST',
-     url: 'abc.rb',
-     data: $scope.user,
-     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-     })
-     .success(function (data) {
-
-     })
-     }*/
+contactApp.controller('contactController', function sendEmail ($scope, $http) {
 
     $scope.user = {
         name: "",
@@ -24,7 +11,38 @@ contactApp.controller('contactController', function ($scope, $http) {
     }
 
     $scope.sendEmail = function(){
+        var data = $('#contactForm').serializeObject();
+        data = JSON.stringify(data);
+        alert(data);
+        var url = 'http://localhost:3000/contact/email.json';
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }
 
+        $http.post(url, data, config)
+            .then(
+                function(response){
+                    alert("Success");
+                },
+                function(response){
+                    alert("Error");
+                }
+            );
+
+
+        /*$http({
+            method: 'POST',
+            url: 'http://localhost:3000/contact/email.json',
+            data: JSON.stringify(data)
+        }).then(function successCallback(response) {
+            alert('Success: '+response);
+        }, function errorCallback(response) {
+            alert('error: '+response);
+        });*/
     }
+
+
 
 });
