@@ -1,6 +1,6 @@
 var contactApp = angular.module('contactApp', []);
 
-contactApp.controller('contactController', function ($scope, $http) {
+contactApp.controller('contactController', function sendEmail ($scope, $http) {
 
     $scope.user = {
         name: "",
@@ -13,10 +13,11 @@ contactApp.controller('contactController', function ($scope, $http) {
     $scope.sendEmail = function(){
         var data = $('#contactForm').serializeObject();
         data = JSON.stringify(data);
+        alert(data);
         var url = 'http://localhost:3000/contact/email.json';
         var config = {
             headers : {
-                'Content-Type': 'application/json;'
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         }
 
