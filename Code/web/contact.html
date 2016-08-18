@@ -86,7 +86,7 @@
                         <header>
                             <h3>Contact Us</h3>
                         </header>
-                        <form class="form-horizontal" name="userForm" data-ng-submit="submitForm(userForm.$valid)"
+                        <form class="form-horizontal" id="contactForm" name="userForm" data-ng-submit="sendEmail()"
                               novalidate>
                             <div class="row">
                                 <div class="col-md-6">
@@ -194,6 +194,7 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTr7mLw6Y2LYVL6zJfu2koVRtlRwrBn8g&callback=initMap"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.serializeObject/2.0.3/jquery.serializeObject.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
     <script src="js/react.min.js"></script>
