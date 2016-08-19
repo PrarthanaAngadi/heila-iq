@@ -9,7 +9,7 @@ myApp.config(["$routeProvider", function($routeProvider){
         controller: "LoginController"
     }).when("/dashboard/users", {
         templateUrl: "partials/users.html",
-        controller: "LoginController"
+        controller: "UserController"
     }).otherwise({
         redirectTo: "/dashboard"
     })

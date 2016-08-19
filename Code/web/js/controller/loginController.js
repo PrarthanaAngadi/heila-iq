@@ -1,13 +1,11 @@
 var mainController = angular.module("mainController", []);
 
-mainController.controller("LoginController", ["$scope", "$http", function($scope, $http){
+mainController.controller("LoginController", ["$scope", "$rootScope","$http", function($scope,$rootScope, $http){
 
-    $scope.user = {
-        email: "",
-        password: "",
-        firstName: "",
-        lastName: "N/A",
-        dob: ""
+    $rootScope.userData = {
+        user: {},
+        lastAccessed:"",
+        userList:[]
     }
 
     $scope.login = function(){
@@ -23,8 +21,17 @@ mainController.controller("LoginController", ["$scope", "$http", function($scope
         $http.post(url, data, config)
             .then(
                 function(response){
-                    alert(response);
-                    $(location).attr("href", "#/dashboard/users");
+                    var userDataStr = JSON.stringify(response.data);
+                    var json = JSON.parse(userDataStr);
+                    alert(json.message);
+                    if(json.message!=="failure") {
+                        $(location).attr("href", "#/dashboard/users");
+                        $rootScope.userData = json;
+                    }
+                    else
+                    {
+                        alert('Invalid credentials');
+                    }
                 },
                 function(response){
                     alert("Error");
@@ -34,7 +41,10 @@ mainController.controller("LoginController", ["$scope", "$http", function($scope
 
 }]);
 
-mainController.controller("UserController", ["$scope", "$http", function($scope, $http){
+
+mainController.controller("UserController", ["$scope","$rootScope", "$http", function($scope,$rootScope, $http){
+
+    $scope.lastAccess = $(".last-accessed span").text;
 
     $scope.getUsers = function() {
         var url = 'http://localhost:3000/users.json';
@@ -48,12 +58,14 @@ mainController.controller("UserController", ["$scope", "$http", function($scope,
             .then(
                 function (response) {
                     $scope.users= response.data;
+                    alert($scope.users);
                 },
                 function (response) {
                     alert("Error");
                 }
             );
     }
+
     $scope.addUser = function()
     {
         var data = $('#userForm').serializeObject();
@@ -77,4 +89,6 @@ mainController.controller("UserController", ["$scope", "$http", function($scope,
             );
     }
 
-}])
+  /*  getUsers();*/
+
+}]);
