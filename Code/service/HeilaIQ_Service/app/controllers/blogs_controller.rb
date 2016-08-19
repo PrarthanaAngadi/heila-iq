@@ -28,7 +28,7 @@ class BlogsController < ApplicationController
 		@blogs = Blog.select("blogs.*, users.*").joins(:user)
 		respond_to do |format|
 		format.html
-		format.json  { render json: @blogs }	
+		format.json  { render :json => {:blogs => @blogs }}	
 		end
 	end
 
