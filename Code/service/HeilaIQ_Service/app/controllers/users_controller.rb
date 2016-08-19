@@ -1,14 +1,13 @@
 class UsersController < ApplicationController
 	skip_before_filter  :verify_authenticity_token
 	respond_to :json
-	#test for cross domain
 	before_filter :cors_preflight_check
 	after_filter :cors_set_access_control_headers
 
 	def cors_set_access_control_headers
 	  headers['Access-Control-Allow-Origin'] = '*'
 	  headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
-	  headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
+	  headers['Access-Control-Allow-Headers'] = 'Origin, X-PINGOTHER, Content-Type, Accept, Authorization, Token'
 	  headers['Access-Control-Max-Age'] = "1728000"
 	end
 
@@ -18,12 +17,8 @@ class UsersController < ApplicationController
 	    headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
 	    headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
 	    headers['Access-Control-Max-Age'] = '1728000'
-
-	    #render :text => '', :content_type => 'text/plain'
 	  end
 	end
-	#end test cross domain
-	#require 'digest/md5'
 
 	def index
 		@users = User.where(status: 'active').all
@@ -90,16 +85,6 @@ class UsersController < ApplicationController
 			render :json => '{"message": "failure"}'
 		end
 	end
-
-	#def destroy
-	#	@user = User.find(params[:id])
-	#	@user.status = "inactive"
-	#	if @user.save
-	#		render :json => '{message: "success"}'
-	#	else
-	#		render :json => '{message: "failure"}'
-	#	end
-	#end
 
 
 end

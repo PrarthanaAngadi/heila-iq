@@ -58,6 +58,29 @@ table.glyphicon-hover tbody tr:hover .glyphicon {
     border: 0;
     background: transparent;
 }
+
+main
+{
+    vertical-align: middle;
+    height: 100vh;
+    padding-top: 10vh;
+}
+.loginContainer
+{
+    margin-top:20vh ;
+}
+.panel
+{
+    background: #F4F5F6;
+    -webkit-box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.52);
+    -moz-box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.52);
+    box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.52);
+}
+.panel .panel-heading
+{
+    background-color:#505160 ;
+    color: #fff;
+}
 /*Form styles*/
 input.ng-invalid.ng-touched
 {
@@ -78,12 +101,26 @@ input.ng-valid.ng-touched
     background: gray;
     border: gray;
 }
+.btn-success {
+    background-color: #AEBD38;
+    border-color: #AEBD38;
+    color: #FFFFFF;
+}
+
+.btn-success:hover {
+    background-color: #598234;
+    border-color: #598234;
+}
 .error
 {
     color:red;
 }
 /*---Form styles*/
 /*Copyright*/
+footer
+{
+    /*height: 5vh;*/
+}
 .copyright {
     text-transform: uppercase;
     font-size: 0.9em;
