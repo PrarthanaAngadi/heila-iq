@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 		data_parsed = JSON.parse(information)
 		userExists = User.where(email: data_parsed["email"],status: 'active').all
 
-		if userExists.empty? 
+		if userExists.blank? 
 			@user = User.new(data_parsed)
 			@user.status = "active"
 			if @user.save
@@ -78,15 +78,20 @@ class UsersController < ApplicationController
 		@user = User.where(email: data_parsed["email"], password: data_parsed["password"]).all
 		@lastAccessed = UserLog.select("created_at").where(email: data_parsed["email"]).order(created_at: :desc).first
 		
-		if !@user.empty?
+		if !@user.blank?
 			@usersAll = User.where(status: 'active').all
 
-			if @lastAccessed.empty?
+			if @lastAccessed.blank?
 				@userLog = UserLog.new
 				@userLog.email = data_parsed["email"]
-				@userLog.user_id = @user.id
+				@userLog.user_id = User.select("id").where(email: data_parsed["email"])
 				@userLog.save
 				@lastAccessed = UserLog.select("created_at").where(email: data_parsed["email"])
+			else
+				@userLog = UserLog.new
+				@userLog.email = data_parsed["email"]
+				@userLog.user_id = User.select("id").where(email: data_parsed["email"])
+				@userLog.save
 			end
 			respond_to do |format|
 			format.html
