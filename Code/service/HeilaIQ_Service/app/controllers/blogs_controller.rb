@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
 	skip_before_filter  :verify_authenticity_token
 	respond_to :json
-	#test for cross domain
 	before_filter :cors_preflight_check
 	after_filter :cors_set_access_control_headers
 
@@ -19,16 +18,14 @@ class BlogsController < ApplicationController
 	    headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
 	    headers['Access-Control-Max-Age'] = '1728000'
 
-	    #render :text => '', :content_type => 'text/plain'
 	  end
 	end
-	#end test cross domain
 
 	def index
 		@blogs = Blog.select("blogs.*, users.*").joins(:user)
 		respond_to do |format|
 		format.html
-		format.json {render :json => {:blogs => @blogs }}	
+		format.json {render :json => {:blogs => @blogs }}
 		end
 	end
 

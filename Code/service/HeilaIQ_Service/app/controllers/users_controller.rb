@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 	skip_before_filter  :verify_authenticity_token
 	respond_to :json
-	#test for cross domain
 	before_filter :cors_preflight_check
 	after_filter :cors_set_access_control_headers
 
@@ -19,23 +18,19 @@ class UsersController < ApplicationController
 	    headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
 	    headers['Access-Control-Max-Age'] = '1728000'
 
-	    #render :text => '', :content_type => 'text/plain'
 	  end
 	end
-	#end test cross domain
-	#require 'digest/md5'
 
 	def index
 		@users = User.where(status: 'active').all
 		respond_to do |format|
 		format.html
-		format.json {render :json => {:users => @users}}
+		format.json { render :json => {:userList => @users}}
 		end
 	end
 
 	def show
 		@user = User.find(params[:id])
-		#@usersAll = User.where(status: 'active').all
 		respond_to do |format|
 		format.html
 		format.json {render :json => {:user => @user}}
@@ -51,7 +46,7 @@ class UsersController < ApplicationController
 		data_parsed = JSON.parse(information)
 		userExists = User.where(email: data_parsed["email"],status: 'active').all
 
-		if userExists.empty? 
+		if userExists.blank? 
 			@user = User.new(data_parsed)
 			@user.status = "active"
 			if @user.save
@@ -65,9 +60,11 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		
 		information = request.raw_post
 		data_parsed = JSON.parse(information)
 		@user = User.find(params[:id])
+		
 		if @user.update(data_parsed)
 			render :json => '{"message": "success"}'
 		else
@@ -79,27 +76,31 @@ class UsersController < ApplicationController
 		information = request.raw_post
 		data_parsed = JSON.parse(information)
 		@user = User.where(email: data_parsed["email"], password: data_parsed["password"]).all
-		if !@user.empty?
+		@lastAccessed = UserLog.select("created_at").where(email: data_parsed["email"]).order(created_at: :desc).first
+		
+		if !@user.blank?
 			@usersAll = User.where(status: 'active').all
+
+			if @lastAccessed.blank?
+				@userLog = UserLog.new
+				@userLog.email = data_parsed["email"]
+				@userLog.user_id = User.select("id").where(email: data_parsed["email"])
+				@userLog.save
+				@lastAccessed = UserLog.select("created_at").where(email: data_parsed["email"])
+			else
+				@userLog = UserLog.new
+				@userLog.email = data_parsed["email"]
+				@userLog.user_id = User.select("id").where(email: data_parsed["email"])
+				@userLog.save
+			end
 			respond_to do |format|
 			format.html
-			format.json  { render :json => {:user => @user, 
+			format.json  { render :json => {:user => @user, :lastAccessed => @lastAccessed,
                                   :userList => @usersAll }}			
             end
 		else
 			render :json => '{"message": "failure"}'
 		end
 	end
-
-	#def destroy
-	#	@user = User.find(params[:id])
-	#	@user.status = "inactive"
-	#	if @user.save
-	#		render :json => '{message: "success"}'
-	#	else
-	#		render :json => '{message: "failure"}'
-	#	end
-	#end
-
 
 end
