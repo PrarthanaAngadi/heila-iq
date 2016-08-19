@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*Juilee*/
 header .navbar
@@ -121,4 +122,165 @@ td a, td a:hover, td a:visited, td a:active, td a:link {
     .copyright .row div {
         text-align: center !important;
     }
+=======
+/*Colors*/
+
+.white
+{
+    color: #ffffff;
+}
+.green
+{
+    color: #1c941e;
+}
+.gray
+{
+    color: #5e5e5e;
+}
+.red
+{
+    color:#ff0000;
+}
+
+/*navbar*/
+header .navbar
+{
+    background: #505160;
+}
+.sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+}
+.sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+}
+.sidebar-nav .navbar li {
+    float: none;
+    display: block;
+}
+.sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.sidebar-nav .navbar li a:hover {
+    background: #68829e;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+table.glyphicon-hover tbody .glyphicon {
+    visibility: hidden;
+}
+table.glyphicon-hover tbody tr:hover .glyphicon {
+    visibility: visible;
+}
+.glyphicon-button
+{
+    -webkit-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+}
+
+.glyphicon {
+    top: 5px;
+}
+
+main
+{
+    vertical-align: middle;
+    height: 100vh;
+    padding-top: 10vh;
+}
+.loginContainer
+{
+    margin-top:20vh ;
+}
+.panel
+{
+    background: #F4F5F6;
+    -webkit-box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.52);
+    -moz-box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.52);
+    box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.52);
+}
+.panel .panel-heading
+{
+    background-color:#505160 ;
+    color: #fff;
+}
+/*Form styles*/
+input.ng-invalid.ng-touched
+{
+    border: solid 1px red;
+}
+input.ng-valid.ng-touched
+{
+    border: solid 1px #5cb85c;
+}
+
+.ng-invalid .btn, .btn-success
+{
+    background: gray;
+    border: gray;
+}
+.ng-invalid .btn:hover, .btn-success:hover
+{
+    background: gray;
+    border: gray;
+}
+.btn-success {
+    background-color: #AEBD38;
+    border-color: #AEBD38;
+    color: #FFFFFF;
+}
+
+.btn-success:hover {
+    background-color: #598234;
+    border-color: #598234;
+}
+.error
+{
+    color:red;
+}
+/*---Form styles*/
+/*Copyright*/
+footer
+{
+    /*height: 5vh;*/
+}
+.copyright {
+    text-transform: uppercase;
+    font-size: 0.9em;
+    padding: 5px;
+    background: #505160;
+    color: #cccccc;
+}
+
+.copyright .row > div:first-of-type {
+    text-align: right;
+}
+
+.copyright .row a {
+    margin-right: 5px;
+    color: #cccccc;
+    padding-right: 9px;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.copyright .row a:last-of-type {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: 0;
+}
+
+.copyright .row a:hover {
+    color: #FFFFFF;
+}
+@media only screen and (max-width: 767px) {
+    .copyright .row div {
+        text-align: center !important;
+    }
+>>>>>>> Web-Service-Test
 }
