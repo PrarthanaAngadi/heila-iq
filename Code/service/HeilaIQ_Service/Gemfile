@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use mysql as the database for Active Record
-gem 'mysql'
+gem 'mysql2', '~> 0.3.18'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 # Use responders to render json format
 gem 'responders', '~> 2.0'
 # Sqlite3 is not used
