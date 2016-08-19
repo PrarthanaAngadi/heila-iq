@@ -52,6 +52,15 @@ a:hover {
     margin-right: 0;
 }
 
+.selected {
+    padding-bottom: 10px !important;
+    border-bottom: 5px solid #AEBD38;
+}
+
+.navbar-nav {
+    margin: 0 -15px;
+}
+
 /* ---- Body Styles ---- */
 
 h2 {
@@ -67,11 +76,6 @@ h3 {
 .jumbotron {
     padding-top: 50px;
     padding-bottom: 0;
-}
-
-.selected {
-    padding-bottom: 10px !important;
-    border-bottom: 5px solid #AEBD38;
 }
 
 .bold {
@@ -392,6 +396,13 @@ a.btn-social-icon {
 
     .product-img {
         padding-top: 0;
+    }
+
+    .selected {
+        padding-bottom: 15px !important;
+        border-bottom: 0 none;
+        padding-left: 10px !important;
+        border-left: 5px solid #AEBD38;
     }
 
 }
