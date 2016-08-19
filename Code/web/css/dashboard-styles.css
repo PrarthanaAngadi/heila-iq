@@ -59,7 +59,29 @@ table.glyphicon-hover tbody tr:hover .glyphicon {
     background: transparent;
 }
 /*Form styles*/
+input.ng-invalid.ng-touched
+{
+    border: solid 1px red;
+}
+input.ng-valid.ng-touched
+{
+    border: solid 1px #5cb85c;
+}
 
+.ng-invalid .btn, .btn-success
+{
+    background: gray;
+    border: gray;
+}
+.ng-invalid .btn:hover, .btn-success:hover
+{
+    background: gray;
+    border: gray;
+}
+.error
+{
+    color:red;
+}
 /*---Form styles*/
 /*Copyright*/
 .copyright {

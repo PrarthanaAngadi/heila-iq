@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 		@users = User.where(status: 'active').all
 		respond_to do |format|
 		format.html
-		format.json {render :json => {:users => @users}}
+		format.json {render :json => {:userList => @users}}
 		end
 	end
 
