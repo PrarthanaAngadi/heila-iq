@@ -213,14 +213,18 @@ h3 {
 
 /* ---- About Page Styles ---- */
 
-.about {
+.about, .awards {
     margin-top: 50px;
     margin-bottom: 25px;
 }
 
-.about p {
+.about p, .awards p {
     text-align: justify;
     line-height: 2.5;
+}
+
+.awards {
+    margin-top: 0;
 }
 
 .prize1 {
