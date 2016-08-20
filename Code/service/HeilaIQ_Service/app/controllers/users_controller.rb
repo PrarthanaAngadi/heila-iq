@@ -97,7 +97,7 @@ class UsersController < ApplicationController
 			respond_to do |format|
 			format.html
 			format.json  { render :json => {:user => @user, :lastAccessed => @lastAccessed,
-                                  :userList => @usersAll, :birthdayList => @birthdayList }}			
+                                  :userList => @usersAll, :birthdayList => @birthdayList }}
             end
 		else
 			render :json => '{"message": "failure"}'
