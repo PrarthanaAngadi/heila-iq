@@ -10,6 +10,9 @@ myApp.config(["$routeProvider", function($routeProvider){
     }).when("/dashboard/users", {
         templateUrl: "partials/users.html",
         controller: "UserController"
+    }).when ("/dashboard/jobs",{
+        templateUrl: "partials/jobs.html",
+        controller: "JobController"
     }).otherwise({
         redirectTo: "/dashboard"
     })

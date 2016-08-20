@@ -1,128 +1,4 @@
-<<<<<<< HEAD
 
-/*Juilee*/
-header .navbar
-{
-    background: #505160;
-}
-textarea {
-    resize:vertical; 
-}
-.sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
-    max-height: none;
-}
-.sidebar-nav .navbar ul {
-    float: none;
-    display: block;
-}
-.sidebar-nav .navbar li {
-    float: none;
-    display: block;
-}
-.sidebar-nav .navbar li a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-.sidebar-nav .navbar li a:hover {
-    background: #68829e;
-    color: #ffffff;
-    font-weight: bold;
-}
-.white
-{
-    color: #ffffff;
-}
-.green
-{
-    color: #1c941e;
-}
-.gray
-{
-    color: #5e5e5e;
-}
-.red
-{
-    color:#ff0000;
-}
-
-tbody .glyphicon {
-    visibility: hidden;
-}
-tbody tr:hover .glyphicon {
-    visibility: visible;
-}
-
-td a, td a:hover, td a:visited, td a:active, td a:link {
-    text-decoration: none;
-    color: #68829E;
-}
-
-.table-hover > tbody > tr.collapse:hover {
-    background: #FFFFFF;
-}
-
-.glyphicon-button {
-    padding: 10px;
-    -webkit-appearance: none;
-    outline: none;
-    border: 0;
-    background: transparent;
-}
-.drop.glyphicon {
-    padding-left: 5px;
-    visibility: visible;
-    display: inline;
-}
-
-/**/
-.copyright {
-    text-transform: uppercase;
-    font-size: 0.9em;
-    padding: 5px;
-    background: #505160;
-    color: #cccccc;
-}
-
-.copyright .row > div:first-of-type {
-    text-align: right;
-}
-
-.copyright .row a {
-    margin-right: 5px;
-    color: #cccccc;
-    padding-right: 9px;
-    text-decoration: none;
-    text-transform: capitalize;
-}
-
-.copyright .row a:last-of-type {
-    margin-right: 0;
-    padding-right: 0;
-    border-right: 0;
-}
-
-.copyright .row a:hover {
-    color: #FFFFFF;
-}
-
-.glyphicon-hover th:last-of-type {
-    text-align: center;
-}
-
-.glyphicon-hover tr td:first-of-type {
-    font-weight: bold;
-}
-
-.well {
-    font-weight: normal;
-}
-
-@media only screen and (max-width: 767px) {
-    .copyright .row div {
-        text-align: center !important;
-    }
-=======
 /*Colors*/
 
 .white
@@ -183,9 +59,9 @@ table.glyphicon-hover tbody tr:hover .glyphicon {
     background: transparent;
 }
 
-.glyphicon {
+/*.glyphicon {
     top: 5px;
-}
+}*/
 
 main
 {
@@ -282,5 +158,44 @@ footer
     .copyright .row div {
         text-align: center !important;
     }
->>>>>>> Web-Service-Test
 }
+/*Prarthana Jobs CSS starts*/
+/*
+.add {
+    top: 23px;
+}*/
+
+#addJob {
+    font-size: 16px;
+}
+.panel-primary {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.panel-primary > .panel-heading  {
+    background-color:#337ab7;
+}
+
+
+.details {
+    color: white;
+    text-decoration: none;
+}
+.drop {
+    float: right;
+}
+
+.jobs-list-group-item {
+    border :none;
+    padding: 0;
+}
+
+.panel-primary > .panel-heading >a:hover, a:visited, a:active, a:link {
+    color:white;
+    text-decoration: none;
+}
+.jobs-sidebar-nav {
+    margin-top: 23px;
+}
+/*ends*/

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-angular.module('userapp',[]).controller("UserController",['$scope',function ($scope) {
 
-}])
-=======
 angular.module('userapp',[]).controller("UserController",['$scope',function ($scope,$http) {
     $scope.getUsers = function() {
         var url = 'http://localhost:3000/users.json';
@@ -46,4 +42,3 @@ angular.module('userapp',[]).controller("UserController",['$scope',function ($sc
     }
 
     }])
->>>>>>> Web-Service-Test

@@ -92,3 +92,9 @@ mainController.controller("UserController", ["$scope","$rootScope", "$http", fun
   /*  getUsers();*/
 
 }]);
+
+mainController.controller('JobController', ["$scope", "$http", function($scope, $http){
+
+
+
+}]);
