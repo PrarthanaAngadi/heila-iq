@@ -97,5 +97,4 @@ var Copyright = React.createClass({
     }
 })
 
-
 ReactDOM.render(<Footer />, $("body > footer")[0]);

@@ -30,17 +30,5 @@ contactApp.controller('contactController', function sendEmail ($scope, $http) {
                     alert("Error");
                 }
             );
-
-
-        /*$http({
-            method: 'POST',
-            url: 'http://localhost:3000/contact/email.json',
-            data: JSON.stringify(data)
-        }).then(function successCallback(response) {
-            alert('Success: '+response);
-        }, function errorCallback(response) {
-            alert('error: '+response);
-        });*/
     }
-
 });
