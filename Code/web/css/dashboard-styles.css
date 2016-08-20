@@ -38,6 +38,12 @@ header .navbar
     padding-top: 12px;
     padding-bottom: 12px;
 }
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
+{
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
 .sidebar-nav .navbar li a:hover {
     background: #68829e;
     color: #ffffff;
@@ -72,51 +78,94 @@ main
 {
     margin-top:20vh ;
 }
-.panel
+.panel-info
+{
+    background-color: #f8f8f8;
+}
+.panel-default
 {
     background: #F4F5F6;
     -webkit-box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.52);
     -moz-box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.52);
     box-shadow: 2px 2px 8px 2px rgba(0,0,0,0.52);
 }
-.panel .panel-heading
+.panel-default .panel-heading
 {
     background-color:#505160 ;
     color: #fff;
+    font-weight: bold;
+    text-align: center;
 }
 /*Form styles*/
 input.ng-invalid.ng-touched
 {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
     border: solid 1px red;
 }
 input.ng-valid.ng-touched
 {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
     border: solid 1px #5cb85c;
 }
-
-.ng-invalid .btn, .btn-success
+.last-accessed
+{
+    font-weight: bold;
+}
+.ng-invalid .btn-success
 {
     background: gray;
     border: gray;
 }
-.ng-invalid .btn:hover, .btn-success:hover
+.ng-invalid .btn-success:hover
 {
     background: gray;
     border: gray;
 }
 .btn-success {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    font-weight: bold;
     background-color: #AEBD38;
     border-color: #AEBD38;
     color: #FFFFFF;
+
 }
 
 .btn-success:hover {
     background-color: #598234;
     border-color: #598234;
+    -webkit-transition: all 0.8s ease-in-out;
+    -moz-transition: all 0.8s ease-in-out;
+    -ms-transition: all 0.8s ease-in-out;
+    -o-transition: all 0.8s ease-in-out;
 }
 .error
 {
     color:red;
+}
+input[type=text],input[type=email],input[type=password],select, textarea {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid #505160;
+}
+input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,select:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
 }
 /*---Form styles*/
 /*Copyright*/

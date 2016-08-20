@@ -1,8 +1,10 @@
 $(document).ready(function() {
     $( "#dob" ).datepicker();
+    $( "#dob1" ).datepicker();
     $("#addUser").click(function() {
         $("#addUserModal").modal();
     });
+
   /*  $('.modal').on('hidden.bs.modal', function (e) {
         $('form')[0].reset();
         $("form input").attr('class', '');
