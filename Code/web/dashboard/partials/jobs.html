@@ -5,7 +5,7 @@
         </div>
     </div>
 </div>
-<div class="container"  ng-controller="JobController">
+<div class="container"  ng-controller="JobController" data-ng-init="getJobs()">
     <div class="row">
         <div class="col-md-3">
             <div class="jobs-sidebar-nav sidebar-nav">
@@ -42,48 +42,34 @@
             <div class="row">
                 <div class="col-md-9">
                     <ul class="list-group">
-                        <li class="jobs-list-group-item list-group-item">
+                        <li class="jobs-list-group-item list-group-item" ng-repeat="job in jobs">
                             <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <a href="#/dashboard/jobs" class="details" title="View Details" data-toggle="collapse" data-target="#demo1">
-                                    Software Engineer
+                                <a href="#/dashboard/jobs" class="details" title="View Details" data-toggle="collapse" data-target="#demo{{$index}}">
+                                    {{job.title}}
                                     <span class="drop glyphicon glyphicon-circle-arrow-down"  title="Description">
                                     </span></a>
                             </div>
-                                <div class="panel-body collapse" id="demo1">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    It is a long established fact that a reader will be distracted by the readable content of a
-                                    page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                                    normal distribution of letters, as opposed to using 'Content here, content here', making it
-                                    look like readable English. Many desktop publishing packages and web page editors now use Lorem
-                                    Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites
-                                    still in their infancy. Various versions have evolved over the years, sometimes by accident,
-                                    sometimes on purpose (injected humour and the like.
+                                <div class="panel-body collapse" id="demo{{$index}}">
+                                    <div class="row">
+                                    <div class="col-md-2 job">Title</div>
+                                    <div class ="col-md-10">{{job.title}}</div>
+                                      </div>
+                                    <div class="row">
+                                    <div class="col-md-2 job">Description</div>
+                                    <div class ="col-md-10">{{job.description}}</div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-md-2 job">Location</div>
+                                    <div class ="col-md-10">{{job.location}}</div>
+                                      </div>
+                                    <div class="row">
+                                    <div class="col-md-2 job">Salary</div>
+                                    <div class ="col-md-10">{{job.salary}}$</div>
+                                      </div>
                                 </div>
                         </div></li>
-                        <li class="jobs-list-group-item list-group-item">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <a href="#/dashboard/jobs" class="details" title="View Details" data-toggle="collapse" data-target="#demo2">
-                                        Front End Developer
-                                        <span class="drop glyphicon glyphicon-circle-arrow-down"  title="Description">
-                                    </span></a>
-                                </div>
-                                <div class="panel-body collapse" id="demo2">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    It is a long established fact that a reader will be distracted by the readable content of a
-                                    page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                                    normal distribution of letters, as opposed to using 'Content here, content here', making it
-                                    look like readable English. Many desktop publishing packages and web page editors now use Lorem
-                                    Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites
-                                    still in their infancy. Various versions have evolved over the years, sometimes by accident,
-                                    sometimes on purpose (injected humour and the like.
-                                </div>
-                            </div></li>
+
                     </ul>
 
                 </div>
@@ -139,12 +125,20 @@
                             Salary is required</p>
                         <p class="error" ng-show="jobForm.salary.$error.pattern && jobForm.salary.$touched">Invalid Salary</p>
                     </div>
+                    <input type="hidden" name="user_id" value="{{ id }}">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Add Job</button>
+                        <input type="button" class="btn btn-danger" value="Close" data-dismiss="modal"/>
+                    </div>
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> Indicates a successful or positive action.
+                    </div>
+                    <div class="alert alert-danger">
+                        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <input type="button" class="btn btn-success" value="Add Job"/>
-                <input type="button" class="btn btn-danger" value="Close" data-dismiss="modal"/>
-            </div>
+
         </div>
 
     </div>

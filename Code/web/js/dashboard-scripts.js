@@ -3,6 +3,8 @@ $(document).ready(function() {
     $( "#dob1" ).datepicker();
     $("#addUser").click(function() {
         $("#addUserModal").modal();
+        $(".alert-success").hide();
+        $(".alert-danger").hide();
     });
 
     $(".details").click(function(){
@@ -14,7 +16,11 @@ $(document).ready(function() {
 
     $("#addJob").click(function() {
         $("#addJobModal").modal();
+        $(".alert-success").hide();
+        $(".alert-danger").hide();
     });
 
+    $(".alert-success").hide();
+    $(".alert-danger").hide();
 });
 
