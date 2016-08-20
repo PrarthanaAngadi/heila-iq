@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
-        <div class="pull-right">
-            Last Access: Some Day
+        <div class="pull-right last-accessed">
+            Last Access: <span>{{lastAccess}}</span>
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container"  ng-controller="UserController">
     <div class="row">
         <div class="col-md-3">
             <div class="sidebar-nav">
@@ -42,9 +42,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="user in data.entries">
-                    <td>{{user.name}}</td>
-                    <td>{{user.niceName}}</td>
+                <tr ng-repeat="user in users">
+                    <td>{{user.firstName}} {{user.lastName}}</td>
+                    <td>{{user.email}}</td>
                     <td><a href=""><span class="glyphicon glyphicon-pencil gray"></span></a>&nbsp;<a href=""><span
                             class="glyphicon glyphicon-remove red"></span></a></td>
                 </tr>
@@ -121,3 +121,4 @@
 
     </div>
 </div>
+<script src="../js/dashboard-scripts.js"></script>

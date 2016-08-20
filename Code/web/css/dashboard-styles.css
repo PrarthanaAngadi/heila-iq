@@ -52,12 +52,15 @@ table.glyphicon-hover tbody tr:hover .glyphicon {
 }
 .glyphicon-button
 {
-    padding: 10px;
     -webkit-appearance: none;
     outline: none;
     border: 0;
     background: transparent;
 }
+
+/*.glyphicon {
+    top: 5px;
+}*/
 
 main
 {
@@ -155,3 +158,43 @@ footer
         text-align: center !important;
     }
 }
+/*Prarthana Jobs CSS starts*/
+/*
+.add {
+    top: 23px;
+}*/
+
+#addJob {
+    font-size: 16px;
+}
+.panel-primary {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.panel-primary > .panel-heading  {
+    background-color:#337ab7;
+}
+
+
+.details {
+    color: white;
+    text-decoration: none;
+}
+.drop {
+    float: right;
+}
+
+.jobs-list-group-item {
+    border :none;
+    padding: 0;
+}
+
+.panel-primary > .panel-heading >a:hover, a:visited, a:active, a:link {
+    color:white;
+    text-decoration: none;
+}
+.jobs-sidebar-nav {
+    margin-top: 23px;
+}
+/*ends*/
