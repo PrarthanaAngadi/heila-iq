@@ -1,28 +1,33 @@
+var Session = {
 
-    /*$(document).ready(function () {
-        $(".details").click(function(){
+    lastAccessed: {
+        id: "",
+        created_at: ""
+    },
 
-            var panelArray = $(".details *");
+    user: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        dob: "",
+        active: ""
+    },
 
-            console.log("Panel Array Length: " + panelArray.length);
+    invalidate: function () {
+        this.user = {
+            firstName: "",
+            lastName: "",
+            email: "",
+            dob: "",
+        }
+    },
 
-            for(var i = 0; i < panelArray.length; i++){
+    set: function(user) {
+        this.user = user;
+    },
 
-                var spanElem = panelArray.get(i);
-                console.log(spanElem);
-
-                var className = spanElem.attr('class');
-
-                console.log("ClassName: " + className);
-
-                if(className.indexOf('glyphicon-circle-arrow-down') >= 0){
-                    console.log("1");
-                    spanElem.attr('class','drop glyphicon glyphicon-circle-arrow-up pull-right');
-                }else {
-                    console.log("2");
-                    spanElem.attr('class','drop glyphicon glyphicon-circle-arrow-down pull-right');
-                }
-            }
-        });
-    })*/
+    get: function() {
+        return this.user;
+    }
+};
 
