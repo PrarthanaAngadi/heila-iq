@@ -1,7 +1,214 @@
-.stories .container {
-    width: 100%;
+.stories {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
 }
 
-.stories .primary, .stories .secondary {
-    width: 50%;
+.mainTiles {
+    margin-bottom: 15px;
+}
+
+.stories .container {
+    width: 100vw;
+}
+
+.left, .right {
+    padding: 0;
+}
+
+.left {
+    width: 49vw;
+    margin-right: 1vw;
+}
+
+.right {
+    width: 50vw;
+}
+
+.right .row {
+    margin: 0;
+}
+
+.right > div > div {
+    padding: 0;
+    margin-bottom: 1vh;
+}
+
+.blog-tiles {
+    width: 100%;
+    background-size: cover;
+}
+
+.first{
+    height: 100vh;
+
+}
+
+.second {
+    height: 59vh;
+}
+
+.third {
+    height: 40vh;
+}
+
+.authorInfo {
+    width: 20vw;
+    height: 35vh;
+    background-color: #0f4bac;
+    opacity: 0.6;
+    margin-top: 50vh;
+    padding-left: 0;
+    margin-left: 0;
+    float: left;
+}
+
+.authorInfo h2 {
+    color: white;
+    margin: 10vh 5vw;
+}
+
+.first .blogTitle {
+    width: 29vw;
+    margin-top: 50vh;
+    float: left;
+    color: white;
+}
+
+.second .blogTitle {
+    opacity: 0.6;
+    background-color: black;
+    margin-top: 39vh;
+    height: 20vh;
+    width: 50vw;
+    color: white;
+    float: left;
+}
+
+.third .blogTitle {
+    opacity: 0.6;
+    background-color: black;
+    margin-top: 25vh;
+    height: 15vh;
+    width: 50vw;
+    color: white;
+    float: left;
+}
+
+.pagination {
+    margin: 0;
+}
+
+.paginationTiles {
+    height: auto;
+    position: relative;
+}
+
+.paginationTiles ul {
+    height: auto;
+    /*background-color: white;*/
+
+}
+
+.paginationTiles li {
+    display: block;
+    overflow: hidden;
+    height: 45vh;
+    padding: 2vh 2vw;
+    margin: 0;
+    border-right: 1px solid #c9c3c3;
+    border-top: 1px solid #c9c3c3;
+}
+
+.paginationTiles li a {
+    margin: 0;
+    /*padding: 5vh;*/
+    height: auto;
+}
+
+.paginationTiles li:hover {
+    background-color: #eee;
+}
+
+.blogImage {
+    height: 25vh;
+    background-size: cover;
+    margin-bottom: 2vh;
+}
+
+.blogHeader {
+    margin: 0;
+    padding: 0;
+    height: 14vh;
+}
+
+.paginationTiles li:nth-child(3n) {
+    border-right: none;
+}
+
+.paginationTiles li:nth-child(1), .paginationTiles li:nth-child(2), .paginationTiles li:nth-child(3) {
+    border-top: none;
+}
+
+.load-more {
+    text-align: center;
+    /*-webkit-box-shadow: 2px 10px 5px -9px rgba(51,51,51,1);
+    -moz-box-shadow: 2px 10px 5px -9px rgba(51,51,51,1);
+    box-shadow: 2px 10px 5px -9px rgba(51,51,51,1);*/
+    margin-bottom: 10px;
+    padding-top: 1px;
+}
+
+.load-more:hover {
+    text-align: center;
+    -webkit-box-shadow: 2px 10px 5px -9px rgba(51,51,51,1);
+    -moz-box-shadow: 2px 10px 5px -9px rgba(51,51,51,1);
+    box-shadow: 2px 10px 5px -9px rgba(51,51,51,1);
+}
+
+.load-more a {
+    color: #333333;
+
+}
+
+.load-more a:hover {
+    text-decoration: none;
+    background: #EEEEEE;
+    /*border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;*/
+
+
+}
+
+.newsLetter .btn {
+    text-align: left;
+}
+
+.newsLetter .btn p {
+    margin-bottom:0;
+}
+
+.newsLetter .btn p span {
+    margin-left: 10px;
+}
+
+.newsLetter button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    vertical-align: middle;
+}
+
+.newsLetter .panel-heading {
+    padding: 0;
+    margin: 0;
+}
+
+.newsLetter img {
+    margin: 5px 5px 5px 0;
+    float: left;
+}
+
+#collapseFirst .panel-body div, #collapseSecond .panel-body div, #collapseThird .panel-body div {
+    margin-top: 5px;
 }
