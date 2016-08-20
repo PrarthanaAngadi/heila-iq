@@ -3,72 +3,73 @@ var mainController = angular.module("mainController", []);
 mainController.controller("LoginController", ["$scope", "$rootScope", "$http",
     function ($scope, $rootScope, $http) {
 
-    $rootScope.userData = {
-        user: "",
-        lastAccessed: "",
-        userList: []
-    }
-        $scope.hideMenu = function() {
+        $rootScope.userData = {
+            user: "",
+            lastAccessed: "",
+            userList: []
+        }
+        $scope.hideMenu = function () {
             $("#menuUser").hide();
         };
-    $scope.login = function () {
-        var data = $('#loginForm').serializeObject();
-        data = JSON.stringify(data);
-        var url = 'http://localhost:3000/users/login.json';
-        var config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+        $scope.login = function () {
+            var data = $('#loginForm').serializeObject();
+            data = JSON.stringify(data);
+            var url = 'http://localhost:3000/users/login.json';
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
             }
-        }
 
-        $http.post(url, data, config)
-            .then(
-                function (response) {
-                    var userDataStr = JSON.stringify(response.data);
-                    var json = JSON.parse(userDataStr);
-                    $("#menuUser").show();
-                    if (json.message !== "failure") {
-                        $(location).attr("href", "#/dashboard/users");
-                        $rootScope.userData = json;
-                    }
-                    else {
+            $http.post(url, data, config)
+                .then(
+                    function (response) {
+                        var userDataStr = JSON.stringify(response.data);
+                        var json = JSON.parse(userDataStr);
+                        $("#menuUser").show();
+                        Session.user.firstName = $scope.userProfilename;
+                        if (json.message !== "failure") {
+                            $(location).attr("href", "#/dashboard/users");
+                            $rootScope.userData = json;
+                        }
+                        else {
+                            $(".alert-danger").show();
+                        }
+                    },
+                    function (response) {
                         $(".alert-danger").show();
                     }
-                },
-                function (response) {
-                    $(".alert-danger").show();
-                }
-            );
-    }
+                );
+        }
 
-}]);
+    }]);
 
 
 mainController.controller("UserController", ["$scope", "$rootScope", "$http",
     function ($scope, $rootScope, $http) {
 
 
-    $scope.getUsers = function () {
-        var url = 'http://localhost:3000/users.json';
-        var config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
-        }
-
-        $http.get(url, config)
-            .then(
-                function (response) {
-                    $scope.users = JSON.parse(JSON.stringify(response.data)).userList;
-                },
-                function (response) {
-                    $(".alert-danger").show();
+        $scope.getUsers = function () {
+            var url = 'http://localhost:3000/users.json';
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                 }
-            );
-    };
+            }
+
+            $http.get(url, config)
+                .then(
+                    function (response) {
+                        $scope.users = JSON.parse(JSON.stringify(response.data)).userList;
+                    },
+                    function (response) {
+                        $(".alert-danger").show();
+                    }
+                );
+        };
 
         $scope.addUser = function () {
-            var data = $('#userForm').serializeObject();
+            var data = $('#addUserForm').serializeObject();
             data = JSON.stringify(data);
             var url = 'http://localhost:3000/users.json';
             var config = {
@@ -83,36 +84,37 @@ mainController.controller("UserController", ["$scope", "$rootScope", "$http",
                         var userDataStr = JSON.stringify(response.data);
                         var json = JSON.parse(userDataStr);
                         var message = json;
-                        $scope.msg={};
+                        $scope.msg = {};
                         if (json.message === "success") {
-                            $('#userForm')[0].reset();
-                            getUsers();
-                            $(".alert-success").show();
-                            $(".alert-danger").hide();
-                            $scope.msg="User created successfully";
+                            $('#addUserForm')[0].reset();
+                            $scope.getUsers();
+                            $(".add-user-success-alert").show();
+                            $(".add-user-failure-alert").hide();
+                            $scope.msg = "User created successfully";
 
                         }
                         else if (json.message === "failure") {
-                            $(".alert-danger").show();
-                            $(".alert-success").hide();
-                            $scope.msg= "User creation failed.Please try again later!";
+                            $(".add-user-failure-alert").show();
+                            $(".add-user-success-alert").hide();
+                            $scope.msg = "User creation failed.Please try again later!";
 
                         }
                         else if (json.message === "User already exits") {
-                            $(".alert-danger").show();
-                            $(".alert-success").hide();
-                            $scope.msg="User already exists";
+                            $(".add-user-failure-alert").show();
+                            $(".add-user-success-alert").hide();
+                            $scope.msg = "User already exists";
 
 
                         }
                     },
                     function (response) {
-                        $(".alert-danger").show();
-                        $(".alert-success").hide();
-                        $scope.msg="Connection problem.Please try again later!";
+                        $(".add-user-failure-alert").show();
+                        $(".add-user-success-alert").hide();
+                        $scope.msg = "Connection problem.Please try again later!";
                     }
                 );
-        }
+        };
+
         $scope.updateUser = function (id) {
             var data = $('#userForm').serializeObject();
             data = JSON.stringify(data);
@@ -144,11 +146,11 @@ mainController.controller("UserController", ["$scope", "$rootScope", "$http",
                         alert("Error");
                     }
                 );
-        }
-        
-        $scope.viewuser =function (id) {
+        };
 
-            var url = 'http://localhost:3000/users/'+id+'.json';
+        $scope.viewuser = function (id) {
+
+            var url = 'http://localhost:3000/users/' + id + '.json';
             var config = {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
@@ -159,34 +161,61 @@ mainController.controller("UserController", ["$scope", "$rootScope", "$http",
                 .then(
                     function (response) {
                         var userData = JSON.parse(JSON.stringify(response.data));
-                       $scope.singleuser= userData.user;
+                        $scope.singleuser = userData.user;
                         $('#edituserModal').modal();
                     },
                     function (response) {
                         alert("Error");
                     }
                 );
-        }
-        $scope.deleteUser=function (id) {
-            $("#"+id).remove();
-            $(".alert-danger").show();
-        }
-    if ($rootScope.userData !== undefined) {
-        $scope.lastAccess = $rootScope.userData.lastAccessed.created_at;
-        $scope.users = $rootScope.userData.userList;
-        $scope.sessionUser = $rootScope.userData.user[0];
-        Session.user = $scope.sessionUser;
-        Session.lastAccessed = $scope.lastAccess
-        localStorage.setItem("session", JSON.stringify(Session));
-    } else {
-        Session = JSON.parse(localStorage.getItem("session"));
-        console.log(Session);
-        $scope.getUsers();
-        $scope.sessionUser = Session.user;
-        $scope.lastAccess = Session.lastAccessed;
-    }
+        };
 
-}]);
+        $scope.deleteUser = function (id) {
+            var data = {"status":"inactive"};
+            data = JSON.stringify(data);
+            var url = 'http://localhost:3000/users/'+id+'.json';
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            }
+
+            $http.post(url, data, config)
+                .then(
+                    function (response) {
+                        var userDataStr = JSON.stringify(response.data);
+                        var json = JSON.parse(userDataStr);
+                        var message = json;
+                        if (json.message === "success") {
+                            $scope.getUsers();
+                            $("#delmsg").removeClass('hide');
+                        }
+                        else if (json.message === "failure") {
+
+                        }
+                    },
+                    function (response) {
+                    }
+                );
+
+        };
+
+        if ($rootScope.userData.user !== "") {
+            $scope.lastAccess = $rootScope.userData.lastAccessed.created_at;
+            $scope.users = $rootScope.userData.userList;
+            $scope.sessionUser = $rootScope.userData.user[0];
+            Session.user = $scope.sessionUser;
+            Session.lastAccessed = $scope.lastAccess
+            localStorage.setItem("session", JSON.stringify(Session));
+        } else {
+            Session = JSON.parse(localStorage.getItem("session"));
+            console.log(Session);
+            $scope.getUsers();
+            $scope.sessionUser = Session.user;
+            $scope.lastAccess = Session.lastAccessed;
+        }
+
+    }]);
 
 mainController.controller("JobController", ["$scope", "$rootScope", "$http",
     function ($scope, $rootScope, $http) {
@@ -234,25 +263,25 @@ mainController.controller("JobController", ["$scope", "$rootScope", "$http",
                         var userDataStr = JSON.stringify(response.data);
                         var json = JSON.parse(userDataStr);
                         var message = json;
-                        $scope.jobmsg={};
+                        $scope.jobmsg = {};
                         if (json.message === "success") {
                             $('#jobForm')[0].reset();
                             $(".alert-success").show();
                             $(".alert-danger").hide();
-                            $scope.jobmsg="Job added successfully";
+                            $scope.jobmsg = "Job added successfully";
                             /*this.getJobs();*/
                         }
                         else if (json.message === "failure") {
                             $(".alert-danger").show();
                             $(".alert-success").hide();
-                            $scope.jobmsg="Connection problem.Please try again later!";
+                            $scope.jobmsg = "Connection problem.Please try again later!";
                         }
 
                     },
                     function (response) {
                         $(".alert-danger").show();
                         $(".alert-success").hide();
-                        $scope.jobmsg="Connection failed.Please try again later!";
+                        $scope.jobmsg = "Connection failed.Please try again later!";
                     }
                 );
         }
@@ -285,8 +314,7 @@ mainController.controller("BlogController", ["$scope", "$rootScope", "$http",
                     }
                 );
         };
-        $scope.createblog =function()
-        {
+        $scope.createblog = function () {
             $(".alert-success").show();
         };
 

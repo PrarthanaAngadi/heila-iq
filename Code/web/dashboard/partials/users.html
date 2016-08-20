@@ -1,4 +1,4 @@
-<div class="container" ng-controller="UserController">
+<div class="container">
     <div class="row">
         <div class="pull-right last-accessed">
             Last Access: <span>{{lastAccess}}</span>
@@ -31,8 +31,8 @@
             </div>
         </div>
         <div class="col-md-6" id="users">
-            <div class="alert alert-danger">
-                <strong>Failure!</strong>User deleted successfully!
+            <div id="delmsg" class="alert alert-danger hide">
+                User deleted successfully!
             </div>
             <table class="table table-hover glyphicon-hover" data-pagination="true">
                 <thead>
@@ -49,7 +49,8 @@
                 <tr ng-repeat="user in users" id="{{user.id}}">
                     <td>{{user.firstName}} {{user.lastName}}</td>
                     <td>{{user.email}}</td>
-                    <td><a href="" ng-click="viewuser(user.id);"><span class="glyphicon glyphicon-pencil gray"></span></a>&nbsp;<a id="deleteuser"><span
+                    <td><a href="" ng-click="viewuser(user.id);"><span
+                            class="glyphicon glyphicon-pencil gray"></span></a>&nbsp;<a id="deleteuser"><span
                             class="glyphicon glyphicon-remove red" ng-click="deleteUser(user.id);"></span></a></td>
                 </tr>
                 </tbody>
@@ -61,187 +62,214 @@
         <div class="col-md-3">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                <h1 class="panel-title">Upcoming Birthdays  <span class="pull-right fa fa-birthday-cake"></span></h1>
+                    <h1 class="panel-title">Upcoming Birthdays <span class="pull-right fa fa-birthday-cake"></span></h1>
 
                 </div>
                 <div class="panel-body">
                     <div class="col-md-1"></div>
                     <div class="col-md-9">
-                    <div class="row">
-                        <span class="pull-right">Aug 28, 2016</span>
-                            Brian Arnold</div>
+                        <div class="row">
+                            <span class="pull-right">Aug 28, 2016</span>
+                            Brian Arnold
+                        </div>
                         <div class="row"><span class="pull-right">Sep 2, 2016</span>
-                            Ryan Miller</div>
+                            Ryan Miller
+                        </div>
                         <div class="row"><span class="pull-right">Sep 7, 2016</span>
-                            Bo Zhang</div>
-                    </ul>
-                </div>
+                            Bo Zhang
+                        </div>
+                        </ul>
+                    </div>
                     <div class="col-md-1"></div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+
             </div>
         </div>
-        <div class="col-md-12 text-center">
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addUserModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="addUserForm" name="addUserForm" ng-model="addUserModal" method="post"
+                      data-ng-submit="addUser();"
+                      novalidate>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h1 class="modal-title">User Signup</h1>
+                        <div class="alert alert-success add-user-success-alert">
+                            <strong>Success!</strong> {{msg}}
+                        </div>
+                        <div class="alert alert-danger add-user-failure-alert">
+                            <strong>Failure!</strong> {{msg}}
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="firstName" class="control-label">Firstname:</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName"
+                                   ng-pattern="/^[a-zA-Z]*$/" ng-required="true" ng-model="user.firstName"
+                                   placeholder="Firstname"/>
+                            <p class="error"
+                               ng-show="addUserForm.firstName.$error.required && addUserForm.firstName.$touched">
+                                Firstname is
+                                required</p>
+                            <p class="error"
+                               ng-show="addUserForm.firstName.$error.pattern && addUserForm.firstName.$touched">Invalid
+                                firstname</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="control-label">Lastname:</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName"
+                                   placeholder="Lastname" ng-pattern="/^[a-zA-Z]*$/" ng-model="user.lastName"
+                                   ng-required="true"/>
+                            <p class="error"
+                               ng-show="addUserForm.lastName.$error.required && addUserForm.lastName.$touched">
+                                Lastname is required</p>
+                            <p class="error"
+                               ng-show="addUserForm.lastName.$error.pattern && addUserForm.lastName.$touched">Invalid
+                                lastname</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob" class="control-label">Date of Birth:</label>
+                            <input type='text' id="dob" class="form-control" placeholder="Date of birth"
+                                   name="dob" ng-model="user.dob"
+                                   ng-required="true"/>
+                            <p class="error" ng-show="addUserForm.dob.$error.required && addUserForm.dob.$touched">Date
+                                of
+                                birth is required</p>
+                            <p class="error" ng-show="addUserForm.dob.$error.pattern && addUserForm.dob.$touched">
+                                Invalid date</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="control-label">Email:</label>
+                            <input type="email" id="email" class="form-control" name="email" placeholder="Email ID"
+                                   ng-required="true" ng-model="user.email"
+                                   ng-pattern="/^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/"
+                            />
+                            <p class="error" ng-show="addUserForm.email.$error.required && addUserForm.email.$touched">
+                                Email
+                                is required</p>
+                            <p class="error" ng-show="addUserForm.email.$error.pattern && addUserForm.email.$touched">
+                                Invalid
+                                email</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="control-label">Password:</label>
+                            <input type="password" id="password" name="password" class="form-control" minlength="6"
+                                   maxlength="12" ng-required="true" ng-model="user.password"
+                                   placeholder="Password"/>
+                            <p class="error"
+                               ng-show="addUserForm.password.$error.required && addUserForm.password.$touched">
+                                Password is required</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Create User</button>
+                        <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="edituserModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="editUserForm" name="editUserForm" ng-model="userForm" method="post"
+                      data-ng-submit="updateUser();"
+                      novalidate>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h1 class="modal-title">Update User</h1>
+                        <div class="alert alert-success">
+                            <strong>Success!</strong> {{msg}}
+                        </div>
+                        <div class="alert alert-danger">
+                            <strong>Danger!</strong> {{msg}}
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+
+                            <label for="firstname1" class="control-label">Firstname:</label>
+                            <input type="text" class="form-control" id="firstname1" name="firstName1"
+                                   ng-pattern="/^[a-zA-Z]*$/" ng-model="singleuser.firstName1" value="Juilee"
+                                   ng-required="true"
+                                   placeholder="Firstname"/>
+                            <p class="error"
+                               ng-show="editUserForm.firstName1.$error.required && editUserForm.firstName1.$touched">
+                                Firstname is
+                                required</p>
+                            <p class="error"
+                               ng-show="editUserForm.firstName1.$error.pattern && editUserForm.firstName1.$touched">
+                                Invalid
+                                firstname</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname1" class="control-label">Lastname:</label>
+                            <input type="text" class="form-control" id="lastname1" name="lastName1"
+                                   placeholder="Lastname" ng-pattern="/^[a-zA-Z]*$/" ng-model="user.lastName"
+                                   ng-required="true" value="Jadhav"/>
+                            <p class="error"
+                               ng-show="editUserForm.lastName1.$error.required && editUserForm.lastName1.$touched">
+                                Lastname is required</p>
+                            <p class="error"
+                               ng-show="editUserForm.lastName1.$error.pattern && editUserForm.lastName1.$touched">
+                                Invalid
+                                lastname</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob1" class="control-label">Date of Birth:</label>
+                            <input type='text' id="dob1" class="form-control" placeholder="Date of birth"
+                                   ng-model="user.dob"
+                                   name="dob1" value="10/10/2016"
+                                   ng-required="true"/>
+                            <p class="error" ng-show="editUserForm.dob1.$error.required && editUserForm.dob1.$touched">
+                                Date of
+                                birth is required</p>
+                            <p class="error" ng-show="editUserForm.dob1.$error.pattern && editUserForm.dob1.$touched">
+                                Invalid date</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="email1" class="control-label">Email:</label>
+                            <input type="email" id="email1" class="form-control" name="email1" placeholder="Email ID"
+                                   ng-required="true" value="jadhav.j@husky.neu.edu"
+                                   ng-pattern="/^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/"
+                                   ng-model="user.email"/>
+                            <p class="error"
+                               ng-show="editUserForm.email1.$error.required && editUserForm.email1.$touched">Email
+                                is required</p>
+                            <p class="error"
+                               ng-show="editUserForm.email1.$error.pattern && editUserForm.email1.$touched">Invalid
+                                email</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="password1" class="control-label">Password:</label>
+                            <input type="password" id="password1" name="password1" class="form-control" minlength="6"
+                                   maxlength="12" ng-required="true" ng-model="user.password"
+                                   placeholder="Password"/>
+                            <p class="error"
+                               ng-show="editUserForm.password1.$error.required && editUserForm.password1.$touched">
+                                Password is required</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Update</button>
+                        <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </form>
+            </div>
 
         </div>
     </div>
 </div>
-
-
-<!-- Modal -->
-<div class="modal fade"  id="addUserModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="userForm" name="userForm" ng-model="userForm" method="post" data-ng-submit="addUser();"
-                  novalidate>
-
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h1 class="modal-title">User Signup</h1>
-                    <div class="alert alert-success">
-                        <strong>Success!</strong> {{msg}}
-                    </div>
-                    <div class="alert alert-danger">
-                        <strong>Failure!</strong> {{msg}}
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="firstname" class="control-label">Firstname:</label>
-                        <input type="text" class="form-control" id="firstname" name="firstName"
-                               ng-pattern="/^[a-zA-Z]*$/" ng-required="true"
-                               placeholder="Firstname"/>
-                        <p class="error"
-                           ng-show="userForm.firstName.$error.required && userForm.firstName.$touched">Firstname is
-                            required</p>
-                        <p class="error" ng-show="userForm.firstName.$error.pattern && userForm.dob.$touched">Invalid
-                            firstname</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname" class="control-label">Lastname:</label>
-                        <input type="text" class="form-control" id="lastname" name="lastName"
-                               placeholder="Lastname" ng-pattern="/^[a-zA-Z]*$/"
-                               ng-required="true"/>
-                        <p class="error" ng-show="userForm.lastName.$error.required && userForm.lastName.$touched">
-                            Lastname is required</p>
-                        <p class="error" ng-show="userForm.lastName.$error.pattern && userForm.dob.$touched">Invalid
-                            lastname</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="dob" class="control-label">Date of Birth:</label>
-                        <input type='text' id="dob" class="form-control" placeholder="Date of birth"
-                               name="dob"
-                               ng-required="true"/>
-                        <p class="error" ng-show="userForm.dob.$error.required && userForm.dob.$touched">Date of
-                            birth is required</p>
-                        <p class="error" ng-show="userForm.dob.$error.pattern && userForm.dob.$touched">Invalid date</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="control-label">Email:</label>
-                        <input type="email" id="email" class="form-control" name="email" placeholder="Email ID"
-                               ng-required="true"
-                               ng-pattern="/^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/"
-                               />
-                        <p class="error" ng-show="userForm.email.$error.required && userForm.email.$touched">Email
-                            is required</p>
-                        <p class="error" ng-show="userForm.email.$error.pattern && userForm.email.$touched">Invalid
-                            email</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="control-label">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control" minlength="6"
-                               maxlength="12" ng-required="true"
-                               placeholder="Password"/>
-                        <p class="error" ng-show="userForm.password.$error.required && userForm.password.$touched">
-                            Password is required</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Create User</button>
-                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-
-            </form>
-        </div>
-
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" modal="showModal" id="edituserModal"  role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="editUserForm" name="userForm" ng-model="userForm" method="post" data-ng-submit="updateUser();"
-                  novalidate>
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h1 class="modal-title">Update User</h1>
-                    <div class="alert alert-success">
-                        <strong>Success!</strong> {{msg}}
-                    </div>
-                    <div class="alert alert-danger">
-                        <strong>Danger!</strong> {{msg}}
-                    </div>
-                </div>
-                <div class="modal-body" >
-                    <div class="form-group">
-
-                        <label for="firstname1" class="control-label">Firstname:</label>
-                        <input type="text" class="form-control" id="firstname1" name="firstName1"
-                               ng-pattern="/^[a-zA-Z]*$/" ng-model="singleuser.firstName1" value="Juilee" ng-required="true"
-                               placeholder="Firstname"/>
-                        <p class="error"
-                           ng-show="userForm.firstName1.$error.required && userForm.firstName1.$touched">Firstname is
-                            required</p>
-                        <p class="error" ng-show="userForm.firstName1.$error.pattern && userForm.firstName1.$touched">Invalid
-                            firstname</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname1" class="control-label">Lastname:</label>
-                        <input type="text" class="form-control" id="lastname1" name="lastName1"
-                               placeholder="Lastname" ng-pattern="/^[a-zA-Z]*$/" ng-model="user.lastName"
-                               ng-required="true" value="Jadhav"/>
-                        <p class="error" ng-show="userForm.lastName1.$error.required && userForm.lastName1.$touched">
-                            Lastname is required</p>
-                        <p class="error" ng-show="userForm.lastName1.$error.pattern && userForm.lastName1.$touched">Invalid
-                            lastname</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="dob1" class="control-label">Date of Birth:</label>
-                        <input type='text' id="dob1" class="form-control" placeholder="Date of birth" ng-model="user.dob"
-                               name="dob1" value="10/10/2016"
-                               ng-required="true"/>
-                        <p class="error" ng-show="userForm.dob1.$error.required && userForm.dob1.$touched">Date of
-                            birth is required</p>
-                        <p class="error" ng-show="userForm.dob1.$error.pattern && userForm.dob1.$touched">Invalid date</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="email1" class="control-label">Email:</label>
-                        <input type="email" id="email1" class="form-control" name="email1" placeholder="Email ID"
-                               ng-required="true" value="jadhav.j@husky.neu.edu"
-                               ng-pattern="/^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/"
-                               ng-model="user.email"/>
-                        <p class="error" ng-show="userForm.email1.$error.required && userForm.email1.$touched">Email
-                            is required</p>
-                        <p class="error" ng-show="userForm.email1.$error.pattern && userForm.email1.$touched">Invalid
-                            email</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="password1" class="control-label">Password:</label>
-                        <input type="password" id="password1" name="password1" class="form-control" minlength="6"
-                               maxlength="12" ng-required="true" ng-model="user.password"
-                               placeholder="Password"/>
-                        <p class="error" ng-show="userForm.password1.$error.required && userForm.password1.$touched">
-                            Password is required</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Update</button>
-                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-
-            </form>
-        </div>
-
-    </div>
-</div>
-    </div>
 <script src="../js/dashboard-scripts.js"></script>
