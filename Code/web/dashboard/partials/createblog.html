@@ -1,0 +1,33 @@
+<div class="container">
+		<div class="row">
+			<div  class="col-md-6">
+			<div class="panel panel-default">
+			<div class="panel-heading"><h1 class="panel-title">Create Blog Items<span class="pull-right glyphicon glyphicon-edit"></span></h1></div>
+				<div class="panel-body">
+				<form id="blog-content">
+				<div class="form-group">
+				<input type="text" placeholder="Blog Heading" class="form-control" id="blogTitle" name="0"/>
+					</div>
+				<div class="form-group" id="btn-create">
+				<button type="submit" class="btn btn-success btn-block">Create Blog</button>
+				</div>
+				</form>
+				</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				 <ul class="list-group">
+ 
+  <li class="list-group-item">
+  <button type="submit" id="sub-heading" class="btn btn-block btn-lg btn-success">Sub-Heading</button></li>
+  <li class="list-group-item">
+  <button type="submit" id="description" class="btn btn-block btn-lg btn-info">Description</button></li>
+  <li class="list-group-item">
+  <button type="submit" id="image-upload" class="btn btn-block btn-lg btn-warning">Image Upload</button></li>
+  <li class="list-group-item">
+  <button type="submit" id="delete" class="btn btn-block btn-lg btn-danger" ondrop="drop(event)" ondragover="allowDrop(event)"><span class="glyphicon glyphicon-trash"></span></button></li>
+</ul>
+			</div>
+		</div>
+	</div>
+	<script src="../js/dashboard-scripts.js"></script>

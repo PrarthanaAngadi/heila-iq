@@ -13,6 +13,9 @@ myApp.config(["$routeProvider", function($routeProvider){
     }).when ("/dashboard/jobs",{
         templateUrl: "partials/jobs.html",
         controller: "JobController"
+    }).when ("/dashboard/blogs",{
+        templateUrl: "partials/createblog.html",
+        controller: "BlogController"
     }).otherwise({
         redirectTo: "/dashboard"
     })

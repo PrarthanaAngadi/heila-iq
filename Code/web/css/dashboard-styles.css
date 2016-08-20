@@ -96,6 +96,7 @@ main
     font-weight: bold;
     text-align: center;
 }
+
 /*Form styles*/
 input.ng-invalid.ng-touched
 {
