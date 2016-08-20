@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Media : Heila iQ</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-social.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/contact.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<header id="menu">
+
+</header>
+<main ng-app="mediaApp">
+    <div class="jumbotron stories">
+        <article ng-controller="mediaController">
+            <section class="mainTiles">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 left">
+                            <div class="blog-tiles first" background-image-directive={{data.blogs[0].imageLocation}}>
+                                <div class="authorInfo">
+                                    <h2>{{data.blogs[0].firstName+ " " +data.blogs[0].lastName}}</h2>
+                                </div>
+                                <div class="blogTitle">
+                                    <h2>{{data.blogs[0].title}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 right">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="blog-tiles second" background-image-directive={{data.blogs[1].imageLocation}}>
+                                        <div class="blogTitle">
+                                            <h2>{{data.blogs[1].title}}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div  class="blog-tiles third" background-image-directive={{data.blogs[1].imageLocation}}>
+                                        <div class="blogTitle">
+                                            <h2>{{data.blogs[2].title}}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section ng-controller="paginationController">
+                <div class="container">
+                    <div class="row">
+                        <div class="paginationTiles"> <!--style="position: relative"-->
+                            <ul class="list-unstyled">
+                                <pagination-tiles-directive></pagination-tiles-directive>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="load-more">
+                    <a href="" ng-click="loadMore()" class="center-block">More</a>
+                </div>
+            </section>
+
+
+
+
+
+            <section class="subTiles">
+
+            </section>
+        </article>
+    </div>
+<h2>NewsLetter</h2>
+    <div>
+        <section class="newsLetter">
+            <div class="container">
+                <div class="row">
+                    <div id="newsLetterAccordian" class="panel-group">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <button class="btn btn-primary " data-toggle="collapse" data-parent="#newsLetterAccordian" href="#collapseFirst">
+                                        <p>MIT team’s “brain” for microgrids wins Clean Energy Prize.
+                                            <span class="drop glyphicon glyphicon-circle-arrow-down"  title="Description"></span>
+                                        </p>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFirst" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <img src="images/MIT_Clean_Energy_Prize_2016.jpg" class="img-responsive">
+                                    <div> <!--style="margin-top: 5vh;"-->
+                                        <p>
+                                            A team of MIT students and alumni won the MIT Clean Energy Prize (CEP) competition on Saturday for creating a “brain” for microgrids, which are smaller, localized versions of traditional power grids. The technology makes the systems more efficient and easier to own and operate.
+                                        </p>
+                                        <a href="http://energy.gov/articles/cleantech-university-prize-highlights-next-generation-clean-energy-innovators" target="_blank">
+                                            <p class="pull-right">view full article...</p><!--style="color: #68829E; text: justify;"-->
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <button  class="btn btn-primary" data-toggle="collapse" data-parent="#newsLetterAccordian"  href="#collapseSecond">
+                                        <p>Cleantech University Prize Highlights Next Generation of Clean Energy Innovators.
+                                            <span class="drop glyphicon glyphicon-circle-arrow-down"  title="Description"></span>
+                                        </p>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseSecond" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <img src="images/National_Cleantech_University_Prize.png" class="img-responsive">
+                                    <div>
+                                        <p>
+                                            Heila Technologies, from the Massachusetts Institute of Technology, won the 2016 Cleantech UP National Competition for developing a universal control hub that automatically monitors and manages disparate microgrids -- such as those that power solar panels, wind turbines, and gas generators -- at places like company campuses, military bases, and rural villages, for optimal performance. They have won the $50,000 award -- but wait, there’s more. They are also receiving an additional prize: a voucher to access facilities and capabilities at our world class National Labs, equivalent to $50,000. Connecting more promising start-ups and small businesses with these resources is one of EERE’s top priorities as we seek to broaden access to the national treasures that are our National Labs.
+                                        </p>
+                                        <a href="http://news.mit.edu/2016/brain-microgrids-wins-clean-energy-prize-0502" target="_blank">
+                                            <p class="pull-right">view full article...</p><!--style="color: #68829E; text: justify;"-->
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <button class="btn btn-primary" data-toggle="collapse" data-parent="#newsLetterAccordian"  href="#collapseThird">
+                                        <p>M.I.T. Prize Winners Help Microgrids Speak a Common Language.
+                                            <span class="drop glyphicon glyphicon-circle-arrow-down"  title="Description"></span>
+                                        </p>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThird" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <img src="images/MIT_Clean_Energy_Prize_2016.jpg" class="img-responsive">
+                                    <div>
+                                        <p>
+                                            The “Heila IQ” distributed controller integrates the languages of all microgrid systems into a single platform—and won the $100,000 grand prize at this month's M.I.T. Clean Energy Prize competition.
+                                        </p>
+                                        <a href="http://blogs.scientificamerican.com/plugged-in/m-i-t-prize-winners-help-microgrids-speak-a-common-language/" target="_blank">
+                                            <p class="pull-right">view full article...</p><!--style="color: #68829E; text: justify;"-->
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</main>
+
+<footer>
+
+</footer>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+<script src="js/react.min.js"></script>
+<script src="js/react-dom.min.js"></script>
+<script src="js/components/mainMenu.js" type="text/babel"></script>
+<script src="js/components/footer.js" type="text/babel"></script>
+<script src="js/scripts.js"></script>
+<script src="js/loadBlog.js"></script>
+<script>
+    $(document).ready(function () {
+
+        /*if($(".authorInfo").offsetHeight < $(".authorInfo").scrollHeight || $(".authorInfo").offsetWidth < $(".authorInfo").scrollWidth){
+         $(".authorInfo").hide();
+         console.log("check1");
+         }else{
+         console.log("check2");
+         $(".authorInfo").show();
+         }*/
+
+        $(".newsLetter .btn").click(function(){
+
+            var btnContent = $(this).children();
+            /* alert($(btnContent).children().attr("class"));*/
+            $(btnContent).children().toggleClass("glyphicon-circle-arrow-down");
+            $(btnContent).children().toggleClass("glyphicon-circle-arrow-up");
+
+            /*if($(btnContent).children().hasClass("glyphicon-circle-arrow-down")){
+             console.log("check");
+             $(".drop").removeClass("glyphicon-circle-arrow-up");
+             $(".drop").addClass("glyphicon-circle-arrow-down");
+             }*/
+
+        });
+
+    });
+</script>
+</body>
+</html>
