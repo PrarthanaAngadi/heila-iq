@@ -93,10 +93,11 @@ class UsersController < ApplicationController
 				@userLog.user_id = User.select("id").where(email: data_parsed["email"])
 				@userLog.save
 			end
+			@birthdayList = User.select("firstName","lastName","dob").order(dob: :desc).limit(3)
 			respond_to do |format|
 			format.html
 			format.json  { render :json => {:user => @user, :lastAccessed => @lastAccessed,
-                                  :userList => @usersAll }}			
+                                  :userList => @usersAll, :birthdayList => @birthdayList }}			
             end
 		else
 			render :json => '{"message": "failure"}'
