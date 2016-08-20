@@ -42,7 +42,4 @@ contactApp.controller('contactController', function sendEmail ($scope, $http) {
             alert('error: '+response);
         });*/
     }
-
-
-
 });

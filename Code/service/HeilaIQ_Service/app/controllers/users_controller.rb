@@ -25,7 +25,11 @@ class UsersController < ApplicationController
 		@users = User.where(status: 'active').all
 		respond_to do |format|
 		format.html
+<<<<<<< HEAD
 		format.json { render :json => {:userList => @users}}
+=======
+		format.json {render :json => {:users => @users}}
+>>>>>>> 615021
 		end
 	end
 
@@ -33,7 +37,11 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		respond_to do |format|
 		format.html
+<<<<<<< HEAD
 		format.json { render :json => {:user => @user}}
+=======
+		format.json {render :json => {:user => @user}}
+>>>>>>> 615021
 		end
 	end
 

@@ -18,9 +18,16 @@ class ContactController < ApplicationController
 	    headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
 	    headers['Access-Control-Max-Age'] = '1728000'
 
+<<<<<<< HEAD
 	  end
 	end
 	
+=======
+
+	  end
+	end
+
+>>>>>>> 615021
 	def sendEmail
 		information = request.raw_post
 		data_parsed = JSON.parse(information)
