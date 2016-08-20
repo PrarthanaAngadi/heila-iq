@@ -8,7 +8,9 @@ mainController.controller("LoginController", ["$scope", "$rootScope", "$http",
         lastAccessed: "",
         userList: []
     }
-
+        $scope.hideMenu = function() {
+            $("#menuUser").hide();
+        };
     $scope.login = function () {
         var data = $('#loginForm').serializeObject();
         data = JSON.stringify(data);
@@ -24,6 +26,7 @@ mainController.controller("LoginController", ["$scope", "$rootScope", "$http",
                 function (response) {
                     var userDataStr = JSON.stringify(response.data);
                     var json = JSON.parse(userDataStr);
+                    $("#menuUser").show();
                     if (json.message !== "failure") {
                         $(location).attr("href", "#/dashboard/users");
                         $rootScope.userData = json;
@@ -164,6 +167,10 @@ mainController.controller("UserController", ["$scope", "$rootScope", "$http",
                     }
                 );
         }
+        $scope.deleteUser=function (id) {
+            $("#"+id).remove();
+            $(".alert-danger").show();
+        }
     if ($rootScope.userData !== undefined) {
         $scope.lastAccess = $rootScope.userData.lastAccessed.created_at;
         $scope.users = $rootScope.userData.userList;
@@ -185,10 +192,7 @@ mainController.controller("JobController", ["$scope", "$rootScope", "$http",
     function ($scope, $rootScope, $http) {
 
         $scope.id = Session.user.id;
-        $scope.number = 0;
-        $scope.getNumber = function(num) {
-            return new Array(num);
-        }
+
 
         $scope.getJobs = function () {
             var url = 'http://localhost:3000/jobs.json';
@@ -252,6 +256,39 @@ mainController.controller("JobController", ["$scope", "$rootScope", "$http",
                     }
                 );
         }
+
+
+    }]);
+
+mainController.controller("BlogController", ["$scope", "$rootScope", "$http",
+    function ($scope, $rootScope, $http) {
+
+        $scope.id = Session.user.id;
+
+
+        $scope.getBlogs = function () {
+            var url = 'http://localhost:3000/blogs.json';
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            }
+
+            $http.get(url, config)
+                .then(
+                    function (response) {
+                        $scope.blogs = JSON.parse(JSON.stringify(response.data)).blogs;
+                    },
+                    function (response) {
+
+                    }
+                );
+        };
+        $scope.createblog =function()
+        {
+            $(".alert-success").show();
+        };
 
 
     }]);

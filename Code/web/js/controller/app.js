@@ -14,6 +14,9 @@ myApp.config(["$routeProvider", function($routeProvider){
         templateUrl: "partials/jobs.html",
         controller: "JobController"
     }).when ("/dashboard/blogs",{
+        templateUrl: "partials/blogs.html",
+        controller: "BlogController"
+    }).when ("/dashboard/createblog",{
         templateUrl: "partials/createblog.html",
         controller: "BlogController"
     }).otherwise({

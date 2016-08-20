@@ -1,33 +1,74 @@
-<div class="container">
-		<div class="row">
-			<div  class="col-md-6">
-			<div class="panel panel-default">
-			<div class="panel-heading"><h1 class="panel-title">Create Blog Items<span class="pull-right glyphicon glyphicon-edit"></span></h1></div>
-				<div class="panel-body">
-				<form id="blog-content">
-				<div class="form-group">
-				<input type="text" placeholder="Blog Heading" class="form-control" id="blogTitle" name="0"/>
-					</div>
-				<div class="form-group" id="btn-create">
-				<button type="submit" class="btn btn-success btn-block">Create Blog</button>
-				</div>
-				</form>
-				</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				 <ul class="list-group">
- 
-  <li class="list-group-item">
-  <button type="submit" id="sub-heading" class="btn btn-block btn-lg btn-success">Sub-Heading</button></li>
-  <li class="list-group-item">
-  <button type="submit" id="description" class="btn btn-block btn-lg btn-info">Description</button></li>
-  <li class="list-group-item">
-  <button type="submit" id="image-upload" class="btn btn-block btn-lg btn-warning">Image Upload</button></li>
-  <li class="list-group-item">
-  <button type="submit" id="delete" class="btn btn-block btn-lg btn-danger" ondrop="drop(event)" ondragover="allowDrop(event)"><span class="glyphicon glyphicon-trash"></span></button></li>
-</ul>
-			</div>
-		</div>
-	</div>
-	<script src="../js/dashboard-scripts.js"></script>
+<div class="container jobs-sidebar-nav" ng-controller="BlogController">
+    <div class="row">
+        <div class="col-md-3">
+            <div class= "sidebar-nav">
+                <div class="navbar navbar-default" data-spy="affix" data-offset-top="197" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".sidebar-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/dashboard/users">Users</a></li>
+                            <li class="active"><a href="#/dashboard/blogs">Blog</a></li>
+                            <li><a href="#/dashboard/jobs">Jobs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" ng-controller="BlogController">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h1 class="panel-title">Create Blog Items<span
+                        class="pull-right glyphicon glyphicon-edit"></span></h1>
+
+                </div>
+                <div class="panel-body">
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> Blog added succesfully!
+                    </div>
+                    <form id="blog-content" name="blog-content" data-ng-submit="createblog()">
+                        <div class="form-group">
+                            <input type="text" placeholder="Blog Heading" class="form-control" id="blogTitle" ng-pattern="/^[a-zA-Z]*$/" ng-required="true" name="title"/>
+                            <p class="error"
+                               ng-show="blog-content.title.$error.required && blog-content.title.$touched">Title is required</p>
+                            <p class="error" ng-show="blog-content.title.$error.pattern && blog-content.title.$touched">Invalid
+                                title</p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" ng-controller="BlogController">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-info">
+                    <h3 class="text-center">Blog Palette</h3>
+                </li>
+                <li class="list-group-item">
+                    <button type="submit" id="sub-heading" class="btn btn-block btn-lg btn-success">Sub-Heading</button>
+                </li>
+                <li class="list-group-item">
+                    <button type="submit" id="description" class="btn btn-block btn-lg btn-info">Description</button>
+                </li>
+                <li class="list-group-item">
+                    <button type="submit" id="image-upload" class="btn btn-block btn-lg btn-warning">Image Upload
+                    </button>
+                </li>
+                <li class="list-group-item">
+                    <button type="submit" id="delete" class="btn btn-block btn-lg btn-danger" ondrop="drop(event)"
+                            ondragover="allowDrop(event)"><span class="glyphicon glyphicon-trash"></span></button>
+                </li>
+                <li class="list-group-item">
+                    <button type="submit" id="done" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="../js/dashboard-scripts.js"></script>
