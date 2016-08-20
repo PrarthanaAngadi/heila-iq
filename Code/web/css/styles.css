@@ -555,7 +555,7 @@ body > footer h3 {
     color: #FFFFFF;
 }
 
-a.btn-social-icon {
+a.btn-social, a.btn-social:visited, a.btn-social:active {
     color: #FFFFFF;
 }
 
