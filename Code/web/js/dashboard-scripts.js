@@ -3,6 +3,8 @@ $(document).ready(function() {
     $( "#dob1" ).datepicker();
     $("#addUser").click(function() {
         $("#addUserModal").modal();
+        $(".alert-success").hide();
+        $(".alert-danger").hide();
     });
 
     $(".details").click(function(){
@@ -13,6 +15,8 @@ $(document).ready(function() {
     });
     $("#addJob").click(function() {
         $("#addJobModal").modal();
+        $(".alert-success").hide();
+        $(".alert-danger").hide();
     });
     var counter=1;
     $("#btn-create").hide();
@@ -46,5 +50,7 @@ $(document).ready(function() {
     counter++;
     });
 
+    $(".alert-success").hide();
+    $(".alert-danger").hide();
 });
 

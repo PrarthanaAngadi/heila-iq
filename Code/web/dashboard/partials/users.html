@@ -79,9 +79,16 @@
         <div class="modal-content">
             <form id="userForm" name="userForm" ng-model="userForm" method="post" data-ng-submit="addUser();"
                   novalidate>
+
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h1 class="modal-title">User Update</h1>
+                    <h1 class="modal-title">User Signup</h1>
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> {{msg}}
+                    </div>
+                    <div class="alert alert-danger">
+                        <strong>Failure!</strong> {{msg}}
+                    </div>
                 </div>
                 <div class="modal-body" ng-controller="UserController">
                     <div class="form-group">
@@ -138,6 +145,7 @@
                     <button type="submit" class="btn btn-success">Create User</button>
                     <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
+
             </form>
         </div>
 
@@ -153,7 +161,12 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h1 class="modal-title">Update User</h1>
-                    {{singleuser.firstName}}
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> {{msg}}
+                    </div>
+                    <div class="alert alert-danger">
+                        <strong>Danger!</strong> {{msg}}
+                    </div>
                 </div>
                 <div class="modal-body"  ng-controller="UserController" >
                     <div class="form-group">
@@ -211,6 +224,7 @@
                     <button type="submit" class="btn btn-success">Update</button>
                     <button type="submit" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
+
             </form>
         </div>
 

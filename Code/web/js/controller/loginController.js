@@ -29,11 +29,11 @@ mainController.controller("LoginController", ["$scope", "$rootScope", "$http",
                         $rootScope.userData = json;
                     }
                     else {
-                        alert('Invalid credentials');
+                        $(".alert-danger").show();
                     }
                 },
                 function (response) {
-                    alert("Error");
+                    $(".alert-danger").show();
                 }
             );
     }
@@ -43,6 +43,7 @@ mainController.controller("LoginController", ["$scope", "$rootScope", "$http",
 
 mainController.controller("UserController", ["$scope", "$rootScope", "$http",
     function ($scope, $rootScope, $http) {
+
 
     $scope.getUsers = function () {
         var url = 'http://localhost:3000/users.json';
@@ -58,7 +59,7 @@ mainController.controller("UserController", ["$scope", "$rootScope", "$http",
                     $scope.users = JSON.parse(JSON.stringify(response.data)).userList;
                 },
                 function (response) {
-                    alert("Error");
+                    $(".alert-danger").show();
                 }
             );
     };
@@ -79,19 +80,33 @@ mainController.controller("UserController", ["$scope", "$rootScope", "$http",
                         var userDataStr = JSON.stringify(response.data);
                         var json = JSON.parse(userDataStr);
                         var message = json;
+                        $scope.msg={};
                         if (json.message === "success") {
                             $('#userForm')[0].reset();
                             getUsers();
+                            $(".alert-success").show();
+                            $(".alert-danger").hide();
+                            $scope.msg="User created successfully";
+
                         }
                         else if (json.message === "failure") {
+                            $(".alert-danger").show();
+                            $(".alert-success").hide();
+                            $scope.msg= "User creation failed.Please try again later!";
 
                         }
                         else if (json.message === "User already exits") {
+                            $(".alert-danger").show();
+                            $(".alert-success").hide();
+                            $scope.msg="User already exists";
+
 
                         }
                     },
                     function (response) {
-                        alert("Error");
+                        $(".alert-danger").show();
+                        $(".alert-success").hide();
+                        $scope.msg="Connection problem.Please try again later!";
                     }
                 );
         }
@@ -165,4 +180,79 @@ mainController.controller("UserController", ["$scope", "$rootScope", "$http",
     }
 
 }]);
+
+mainController.controller("JobController", ["$scope", "$rootScope", "$http",
+    function ($scope, $rootScope, $http) {
+
+        $scope.id = Session.user.id;
+        $scope.number = 0;
+        $scope.getNumber = function(num) {
+            return new Array(num);
+        }
+
+        $scope.getJobs = function () {
+            var url = 'http://localhost:3000/jobs.json';
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            }
+
+            $http.get(url, config)
+                .then(
+                    function (response) {
+                        $scope.jobs = JSON.parse(JSON.stringify(response.data)).jobs;
+                        $(".alert-danger").hide();
+                    },
+                    function (response) {
+                        $(".alert-danger").show();
+                        $(".alert-success").hide();
+                    }
+                );
+        };
+
+        $scope.addJob = function () {
+
+            var data = $('#jobForm').serializeObject();
+            data = JSON.stringify(data);
+
+            var url = 'http://localhost:3000/jobs.json';
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            }
+
+            $http.post(url, data, config)
+                .then(
+                    function (response) {
+                        var userDataStr = JSON.stringify(response.data);
+                        var json = JSON.parse(userDataStr);
+                        var message = json;
+                        $scope.jobmsg={};
+                        if (json.message === "success") {
+                            $('#jobForm')[0].reset();
+                            $(".alert-success").show();
+                            $(".alert-danger").hide();
+                            $scope.jobmsg="Job added successfully";
+                            /*this.getJobs();*/
+                        }
+                        else if (json.message === "failure") {
+                            $(".alert-danger").show();
+                            $(".alert-success").hide();
+                            $scope.jobmsg="Connection problem.Please try again later!";
+                        }
+
+                    },
+                    function (response) {
+                        $(".alert-danger").show();
+                        $(".alert-success").hide();
+                        $scope.jobmsg="Connection failed.Please try again later!";
+                    }
+                );
+        }
+
+
+    }]);
 

@@ -10,7 +10,8 @@ var Session = {
         lastName: "",
         email: "",
         dob: "",
-        active: ""
+        active: "",
+        id:""
     },
 
     invalidate: function () {
