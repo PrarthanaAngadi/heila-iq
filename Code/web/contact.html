@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Contact US : Heila iQ</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-social.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<header class="menu"></header>
+
+<main>
+    <div id="map"></div>
+    <script type="text/javascript">
+        function initMap(lat = 42.359858, lng = -71.099130, loc = 'Boston') {
+            var myLatLng = {lat, lng};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: myLatLng
+            });
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: loc
+            });
+        }
+    </script>
+    <div class="container">
+        <article>
+            <section class="location">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 ">
+                        <div class="addr-container center-block">
+                            <h2>Massachusetts <a href="#"><span class="glyphicon glyphicon-map-marker"
+                                                                onclick="initMap(42.359858, -71.099130, 'Boston')"></span></a>
+                            </h2>
+                            <div>
+                                <address>
+                                    <p>Room 2955, 29/F, Block C,</p>
+                                    <p>Central International Trade Center</p>
+                                    <p>No.6 Jianguomenwei Dajie, Beijing</p>
+                                    <p>Phone: <a href="tel:+85290938368">+852 90938368</a></p>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="addr-container center-block">
+                            <h2>California <a href="#"><span class="glyphicon glyphicon-map-marker"
+                                                             onclick="initMap(27.664827, -81.515754, 'California')"></span></a>
+                            </h2>
+                            <address>
+                                <p>Room 2955, 29/F, Block C, </p>
+                                <p>Central International Trade Center</p>
+                                <p>No.6 Jianguomenwei Dajie, Beijing</p>
+                                <p>Phone: <a href="tel:+85290938368">+852 90938368</a></p>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</main>
+
+<footer data-ng-app="contactApp" id="contact-footer">
+    <div>
+        <div class="container">
+            <div class="row">
+
+                <!--Dynamic component-->
+                <div class="col-md-8" data-ng-controller="contactController">
+                    <header>
+                        <h3>Contact Us</h3>
+                    </header>
+                    <form class="form-horizontal" id="contactForm" name="userForm" data-ng-submit="sendEmail()"
+                          novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <div class="form-group"
+                                         data-ng-class="{'has-error': userForm.name.$invalid && userForm.name.$touched}">
+                                        <label class="sr-only" for="name">Name</label>
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="Name"
+                                               data-ng-pattern="/^[a-zA-Z ]*$/" data-ng-model="user.name"
+                                               data-ng-required="true">
+                                        <span data-ng-show="userForm.name.$error.required && userForm.name.$touched"
+                                              class="text-danger">Name is required</span>
+                                        <span data-ng-show="userForm.name.$error.pattern && userForm.name.$touched"
+                                              class="text-danger">Please enter a valid name</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="company">Company</label>
+                                        <input type="text" id="company" name="company" class="form-control"
+                                               placeholder="Company" data-ng-model="user.company">
+                                    </div>
+                                    <div class="form-group"
+                                         data-ng-class="{'has-error': userForm.email.$invalid && userForm.email.$touched}">
+                                        <label class="sr-only" for="email">Email</label>
+                                        <input type="email" id="email" name="email" class="form-control"
+                                               placeholder="Email"
+                                               data-ng-model="user.email" data-ng-required="true">
+                                        <span data-ng-show="userForm.email.$invalid && userForm.email.$touched"
+                                              class="text-danger">Please enter a valid email address</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="userInfo">Role</label>
+                                        <select id="userInfo" name="userInfo" class="form-control"
+                                                data-ng-model="user.userInfo">
+                                            <option value="N/A" disabled>Who you are</option>
+                                            <option value="Micro-Grid Developer">Micro-Grid Developer</option>
+                                            <option value="Micro-Grid Installer">Micro-Grid Installer</option>
+                                            <option value="End User">End User</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <div class="form-group"
+                                         data-ng-class="{'has-error': userForm.message.$invalid && userForm.message.$touched}">
+                                        <label class="sr-only" for="inputMessage">Message</label>
+                                        <textarea id="inputMessage" name="message" class="form-control"
+                                                  placeholder="Message"
+                                                  data-ng-model="user.message" data-ng-minlength="10"
+                                                  data-ng-required="true"></textarea>
+                                        <span data-ng-show="userForm.message.$error.required && userForm.message.$touched"
+                                              class="text-danger">Message is required</span>
+                                        <span data-ng-show="userForm.message.$error.minlength && userForm.message.$touched"
+                                              class="text-danger">Message is too Short</span>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <div class="form-group text-right">
+                                        <input type="submit" class="btn btn-primary"
+                                               data-ng-disabled="userForm.$invalid"
+                                               value="Submit">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-4 col-sm-3 col-sm-offset-3 col-xs-6 social-icons">
+                            <a href="https://twitter.com/heilatech" target="_blank"
+                               class="btn btn-social-icon btn-lg btn-twitter"><span class="fa fa-twitter"></span></a>
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-xs-6 social-icons">
+                            <a class="btn btn-social-icon btn-lg btn-linkedin"><span class="fa fa-linkedin"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12 pull-right">
+                        <a href={"#"}>Privacy</a>
+                        <a href={"#"}>Legal</a>
+                        <a href={"#"}>Terms</a>
+                    </div>
+                    <div class="col-sm-6 col-xs-12 pull-left">&copy; 2016 Heila Technologies</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<input type="hidden" id="page-info" value="3">
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTr7mLw6Y2LYVL6zJfu2koVRtlRwrBn8g&callback=initMap"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.serializeObject/2.0.3/jquery.serializeObject.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+<script src="js/react.min.js"></script>
+<script src="js/react-dom.min.js"></script>
+<script src="js/components/mainMenu.js" type="text/babel"></script>
+<script src="js/scripts.js"></script>
+<script src="js/controller/contactController.js"></script>
+</body>
+
+</html>
