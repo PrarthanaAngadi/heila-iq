@@ -22,6 +22,7 @@ var Footer = React.createClass({
 
             /* Footer content for Home Page */
             case "0":
+            case "2":
                 this.props.content = (
                     <div className="col-md-8 col-sm-12">
                         <header>
@@ -46,10 +47,6 @@ var Footer = React.createClass({
                         </section>
                     </div>
                 );
-                break;
-
-            /* Footer content for Media Page */
-            case "2":
                 break;
         }
     },
