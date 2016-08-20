@@ -211,6 +211,10 @@ h3 {
     margin-bottom: 20px;
 }
 
+.heila-working .carousel-caption p {
+    color: #505160;
+}
+
 /* ---- About Page Styles ---- */
 
 .about {
